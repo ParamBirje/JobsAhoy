@@ -2,26 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* CUSTOM SCROLLBAR */
+/* ::-webkit-scrollbar {
+  width: 6px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+::-webkit-scrollbar-track {
+  background-color: #1f1f1f;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #fffba4;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #dcd88c;
+} */
+
+/* Dark Scroll bar */
+:root {
+  color-scheme: dark;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    to right bottom,
+    theme("colors.slate.800") 0%,
+    theme("colors.slate.900") 8%,
+    theme("colors.slate.950") 35% /* rgb(var(--background-end-rgb)) */
+  );
+}
+
+/* SLIDER RANGE */
+.horizontal-slider {
+  width: 100%;
+  max-width: 500px;
+  height: 50px;
+}
+
+.example-thumb {
+  font-size: 1em;
+  text-align: center;
+  color: white;
+  cursor: grab;
+  box-sizing: border-box;
+  @apply rounded-full bg-accent font-semibold;
+}
+
+.example-thumb.active {
+  @apply bg-accent-light;
+}
+
+.example-thumb:hover {
+  @apply bg-accent-light;
+}
+
+.example-track {
+  position: relative;
+  @apply rounded-full bg-primary-lightest;
+}
+
+.example-track.example-track-1 {
+  @apply bg-slate-400;
+}
+
+.horizontal-slider .example-track {
+  top: 20px;
+  height: 10px;
+}
+
+.horizontal-slider .example-thumb {
+  top: 8px;
+  width: 32px;
+  height: 30px;
+  line-height: 30px;
 }
