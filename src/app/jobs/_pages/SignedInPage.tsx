@@ -30,6 +30,7 @@ export default async function SignedInPage({
   // Getting the searchParams to change the content (for using filters)
   let cleanedProfileList: number[] = [];
   let cleanedLocationList: number[] = [];
+  let cleanedVisaStatus: number | null = null;
 
   // Getting profile filter params
   if (searchParams.profile) {
@@ -41,7 +42,6 @@ export default async function SignedInPage({
     //   cleanedProfileList.push(Number(selectedProfile.id));
     // }
   } else {
-    // profilesList.forEach((profile) => cleanedProfileList.push(profile.id));
     redirect(`/jobs?profile=${profilesList.map((profile) => profile.id).join("&profile=")}`);
   }
 
@@ -51,10 +51,14 @@ export default async function SignedInPage({
     searchParams.location.forEach((locationID) => cleanedLocationList.push(Number(locationID)));
   }
 
+  if (searchParams.visa && (searchParams.visa == "1" || searchParams.visa == "0")) {
+    cleanedVisaStatus = Number(searchParams.visa);
+  }
+
   // Promises
   const [jobsData, totalJobs, locationsList] = await Promise.all([
-    GetJobs(cleanedProfileList, cleanedLocationList, page),
-    GetTotalJobsCount(cleanedProfileList, cleanedLocationList),
+    GetJobs(cleanedProfileList, cleanedLocationList, cleanedVisaStatus, page),
+    GetTotalJobsCount(cleanedProfileList, cleanedLocationList, cleanedVisaStatus),
 
     // Filters
     GetAllLocations(),

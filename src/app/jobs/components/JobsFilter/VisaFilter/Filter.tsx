@@ -2,16 +2,21 @@
 import { CaretDown } from "@/lib/Icons";
 import React, { useEffect, useRef, useState } from "react";
 import Option from "./Option";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function VisaFilter() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
   const optionsList: VisaStatusType[] = [
     {
       id: 1,
-      is_visa_sponsored: true,
+      is_visa_sponsored: 1,
     },
     {
       id: 2,
-      is_visa_sponsored: false,
+      is_visa_sponsored: 0,
     },
   ];
 
@@ -20,8 +25,13 @@ export default function VisaFilter() {
     setShowOptions((prev) => !prev);
   }
 
+  // Filter lists
+  const currentlyFilteredIDs = searchParams.getAll("visa");
   const [filterList, setFilterList] = useState(
-    optionsList.map((option) => ({ ...option, checked: false }))
+    optionsList.map((option) => ({
+      ...option,
+      checked: currentlyFilteredIDs.includes(option.is_visa_sponsored.toString()),
+    }))
   );
 
   const handleFilterChange = (index: number) => {
@@ -50,14 +60,30 @@ export default function VisaFilter() {
     };
   }, [showOptions]);
 
+  // Clear button handler
+  function handleClearFilter() {
+    setFilterList((prevFilterList) =>
+      prevFilterList.map((fruit) => ({
+        ...fruit,
+        checked: false,
+      }))
+    );
+  }
+
+  // Apply button handler
   function handleApplyButton() {
     console.log("Applied");
 
     const checkedOptions = filterList.filter((option) => option.checked);
-    console.log(
-      "Checked Job Types:",
-      checkedOptions.map((visaStatus) => visaStatus.is_visa_sponsored)
-    );
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("visa");
+
+    if (checkedOptions.length == 1) {
+      checkedOptions.forEach((visaStatus) =>
+        params.append("visa", visaStatus.is_visa_sponsored.toString())
+      );
+    }
+    router.push("/jobs?" + params.toString());
 
     handleShowOptions();
   }
@@ -80,6 +106,10 @@ export default function VisaFilter() {
           className="z-[1] flex flex-col gap-2 absolute left-0 top-[3rem] rounded-md px-2 py-2 border-[1.5px] bg-[#0A1022] border-primary-lightest min-w-full"
         >
           <ul className="flex flex-col gap-1 w-full">
+            <div className="text-secondary-dark text-xs px-3 py-1">
+              Both are selected by default.
+            </div>
+
             {filterList.map((visaStatus, index) => {
               return (
                 <Option
@@ -90,14 +120,16 @@ export default function VisaFilter() {
                 />
               );
             })}
-
-            {optionsList.length == 0 && (
-              <div className="text-secondary-dark text-sm text-center">No options.</div>
-            )}
           </ul>
 
           <div className="flex justify-end items-center gap-3 px-1 py-1">
-            <button className="hover:underline text-accent-light text-sm">Clear</button>
+            <button
+              onClick={handleClearFilter}
+              className="hover:underline text-accent-light text-sm"
+            >
+              Clear
+            </button>
+
             <button
               onClick={handleApplyButton}
               className="text-sm bg-accent rounded-full px-4 py-1 font-medium hover:bg-accent-light duration-100"

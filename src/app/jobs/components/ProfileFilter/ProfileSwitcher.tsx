@@ -48,11 +48,11 @@ export default function ProfileSwitcher({
   }, [showOptions]);
 
   // The Filter List
-  const currentlyFilteredProfileIDs = searchParams.getAll("profile");
+  const currentlyFilteredIDs = searchParams.getAll("profile");
   const [filterList, setFilterList] = useState(
-    profilesList.map((profile) => ({
-      ...profile,
-      checked: currentlyFilteredProfileIDs.includes(profile.id.toString()),
+    profilesList.map((option) => ({
+      ...option,
+      checked: currentlyFilteredIDs.includes(option.id.toString()),
     }))
   );
 

@@ -33,5 +33,5 @@ interface JobTypeType {
 
 interface VisaStatusType {
   id: number;
-  is_visa_sponsored: boolean;
+  is_visa_sponsored: 0 | 1;
 }

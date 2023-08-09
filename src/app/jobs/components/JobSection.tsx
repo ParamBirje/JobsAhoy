@@ -36,9 +36,7 @@ export default function JobSection({
             return <JobCard job={job} key={job.id} />;
           })
         ) : (
-          <p className="mt-4 tracking-wide text-secondary-dark">
-            Jobs for your profile are on the way!
-          </p>
+          <p className="mt-4 tracking-wide text-secondary-dark">No jobs found for this search.</p>
         )}
 
         {/* Pagination */}

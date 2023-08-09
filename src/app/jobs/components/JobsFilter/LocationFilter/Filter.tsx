@@ -13,8 +13,13 @@ export default function LocationFilter({ optionsList }: { optionsList: LocationT
     setShowOptions((prev) => !prev);
   }
 
+  // Filter lists
+  const currentlyFilteredIDs = searchParams.getAll("location");
   const [filterList, setFilterList] = useState(
-    optionsList.map((option) => ({ ...option, checked: false }))
+    optionsList.map((option) => ({
+      ...option,
+      checked: currentlyFilteredIDs.includes(option.id.toString()),
+    }))
   );
 
   const handleFilterChange = (index: number) => {

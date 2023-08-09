@@ -2,15 +2,24 @@
 import { CaretDown } from "@/lib/Icons";
 import React, { useEffect, useRef, useState } from "react";
 import Option from "./Option";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function JobTypeFilter({ optionsList }: { optionsList: JobTypeType[] }) {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
   const [showOptions, setShowOptions] = useState(false);
   function handleShowOptions() {
     setShowOptions((prev) => !prev);
   }
 
+  // Filter lists
+  const currentlyFilteredIDs = searchParams.getAll("type");
   const [filterList, setFilterList] = useState(
-    optionsList.map((option) => ({ ...option, checked: false }))
+    optionsList.map((option) => ({
+      ...option,
+      checked: currentlyFilteredIDs.includes(option.id.toString()),
+    }))
   );
 
   const handleFilterChange = (index: number) => {
@@ -38,6 +47,16 @@ export default function JobTypeFilter({ optionsList }: { optionsList: JobTypeTyp
       document.removeEventListener("click", handleClickOutside);
     };
   }, [showOptions]);
+
+  // Clear button handler
+  function handleClearFilter() {
+    setFilterList((prevFilterList) =>
+      prevFilterList.map((fruit) => ({
+        ...fruit,
+        checked: false,
+      }))
+    );
+  }
 
   function handleApplyButton() {
     console.log("Applied");
@@ -86,7 +105,13 @@ export default function JobTypeFilter({ optionsList }: { optionsList: JobTypeTyp
           </ul>
 
           <div className="flex justify-end items-center gap-3 px-1 py-1">
-            <button className="hover:underline text-accent-light text-sm">Clear</button>
+            <button
+              onClick={handleClearFilter}
+              className="hover:underline text-accent-light text-sm"
+            >
+              Clear
+            </button>
+
             <button
               onClick={handleApplyButton}
               className="text-sm bg-accent rounded-full px-4 py-1 font-medium hover:bg-accent-light duration-100"

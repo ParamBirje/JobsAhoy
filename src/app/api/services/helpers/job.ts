@@ -2,7 +2,12 @@ import { db } from "../db/config";
 import { sql } from "kysely";
 
 export class JobHelper {
-  async SearchJobsByProfile(profileIDs: string[], locationIDs: string[], page: number | null) {
+  async SearchJobsByProfile(
+    profileIDs: string[],
+    locationIDs: string[],
+    visaStatus: string | null,
+    page: number | null
+  ) {
     const itemsPerPage = 10;
 
     let currentPage = page ?? 1;
@@ -46,12 +51,17 @@ export class JobHelper {
         );
     }
 
+    // Visa Status Filter
+    if (visaStatus) {
+      query = query.where("visa_job.job_sponsored", "=", Boolean(Number(visaStatus)));
+    }
+
     const result = await query.offset(offset).limit(itemsPerPage).execute();
     return result;
   }
 
   // HACK: This code should be the same as above.
-  async CountJobsByProfile(profileIDs: string[], locationIDs: string[]) {
+  async CountJobsByProfile(profileIDs: string[], locationIDs: string[], visaStatus: string | null) {
     let query = db
       .selectFrom("visa_job")
       .innerJoin("job_profile", "job_profile.id", "visa_job.selected_profile")
@@ -78,6 +88,11 @@ export class JobHelper {
             })
           )
         );
+    }
+
+    // Visa Status Filter
+    if (visaStatus) {
+      query = query.where("visa_job.job_sponsored", "=", Boolean(Number(visaStatus)));
     }
 
     const result = await query.executeTakeFirst();

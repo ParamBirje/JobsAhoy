@@ -7,6 +7,7 @@ export async function GetUserProfiles(userID: number) {
 export async function GetJobs(
   profileIDs: number[],
   locationIDs: number[],
+  visaStatus: number | null,
   page?: number
 ): Promise<{
   jobsLength: number;
@@ -15,18 +16,24 @@ export async function GetJobs(
   const res = await fetch(
     `http://localhost:3000/api/jobs/search?profile=${profileIDs.join("&profile=")}${
       locationIDs.length > 0 ? `&location=${locationIDs.join("&location=")}` : ""
-    }&page=${page ?? "1"}`
+    }${visaStatus != null ? `&visa=${visaStatus}` : ""}&page=${page ?? "1"}`
   );
 
   const body = await res.json();
+  console.log("requesting url ", res.url);
+
   return body;
 }
 
-export async function GetTotalJobsCount(profileIDs: number[], locationIDs: number[]) {
+export async function GetTotalJobsCount(
+  profileIDs: number[],
+  locationIDs: number[],
+  visaStatus: number | null
+) {
   const res = await fetch(
     `http://localhost:3000/api/jobs/count?profile=${profileIDs.join("&profile=")}${
       locationIDs.length > 0 ? `&location=${locationIDs.join("&location=")}` : ""
-    }`
+    }${visaStatus != null ? `&visa=${visaStatus}` : ""}`
   );
 
   const body = await res.json();
