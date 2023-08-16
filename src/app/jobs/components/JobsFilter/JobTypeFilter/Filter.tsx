@@ -58,14 +58,16 @@ export default function JobTypeFilter({ optionsList }: { optionsList: JobTypeTyp
     );
   }
 
+  // Apply button handler
   function handleApplyButton() {
     console.log("Applied");
 
     const checkedOptions = filterList.filter((option) => option.checked);
-    console.log(
-      "Checked Job Types:",
-      checkedOptions.map((jobtype) => jobtype.job_type_name)
-    );
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("type");
+
+    checkedOptions.forEach((location) => params.append("type", location.id.toString()));
+    router.push("/jobs?" + params.toString());
 
     handleShowOptions();
   }

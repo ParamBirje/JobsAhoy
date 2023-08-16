@@ -4,6 +4,7 @@ import ProfileSwitcher from "../components/ProfileFilter/ProfileSwitcher";
 import { redirect } from "next/navigation";
 import Filters from "../components/Filters";
 import {
+  GetAllJobTypes,
   GetAllLocations,
   GetJobs,
   GetTotalJobsCount,
@@ -31,6 +32,8 @@ export default async function SignedInPage({
   let cleanedProfileList: number[] = [];
   let cleanedLocationList: number[] = [];
   let cleanedVisaStatus: number | null = null;
+  let cleanedExperienceRange: number[] = [];
+  let cleanedJobTypeList: number[] = [];
 
   // Getting profile filter params
   if (searchParams.profile) {
@@ -55,13 +58,37 @@ export default async function SignedInPage({
     cleanedVisaStatus = Number(searchParams.visa);
   }
 
+  if (searchParams.maxExp && searchParams.minExp) {
+    const tempExperienceRange = [searchParams.minExp, searchParams.maxExp];
+    tempExperienceRange.forEach((range) => cleanedExperienceRange.push(Number(range)));
+  }
+
+  if (searchParams.type) {
+    searchParams.type = [...searchParams.type];
+    searchParams.type.forEach((jobTypeID) => cleanedLocationList.push(Number(jobTypeID)));
+  }
+
   // Promises
-  const [jobsData, totalJobs, locationsList] = await Promise.all([
-    GetJobs(cleanedProfileList, cleanedLocationList, cleanedVisaStatus, page),
-    GetTotalJobsCount(cleanedProfileList, cleanedLocationList, cleanedVisaStatus),
+  const [jobsData, totalJobs, locationsList, jobTypesList] = await Promise.all([
+    GetJobs(
+      cleanedProfileList,
+      cleanedLocationList,
+      cleanedVisaStatus,
+      cleanedExperienceRange,
+      cleanedJobTypeList,
+      page
+    ),
+    GetTotalJobsCount(
+      cleanedProfileList,
+      cleanedLocationList,
+      cleanedVisaStatus,
+      cleanedExperienceRange,
+      cleanedJobTypeList
+    ),
 
     // Filters
     GetAllLocations(),
+    GetAllJobTypes(),
   ]);
 
   return (
@@ -79,7 +106,7 @@ export default async function SignedInPage({
           </div>
 
           {/* Filters */}
-          <Filters locationsList={locationsList} />
+          <Filters locationsList={locationsList} jobTypesList={jobTypesList} />
         </div>
 
         {/* Job Section */}

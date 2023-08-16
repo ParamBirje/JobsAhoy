@@ -28,7 +28,7 @@ interface LocationType {
 
 interface JobTypeType {
   id: number;
-  job_type_name: string;
+  type_name: string;
 }
 
 interface VisaStatusType {

@@ -106,7 +106,7 @@ export default function VisaFilter() {
           className="z-[1] flex flex-col gap-2 absolute left-0 top-[3rem] rounded-md px-2 py-2 border-[1.5px] bg-[#0A1022] border-primary-lightest min-w-full"
         >
           <ul className="flex flex-col gap-1 w-full">
-            <div className="text-secondary-dark text-xs px-3 py-1">
+            <div className="text-secondary-dark text-xs px-3 py-1 tracking-wide">
               Both are selected by default.
             </div>
 

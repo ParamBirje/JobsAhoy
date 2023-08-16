@@ -6,6 +6,9 @@ export class JobHelper {
     profileIDs: string[],
     locationIDs: string[],
     visaStatus: string | null,
+    minExp: string | null,
+    maxExp: string | null,
+    jobTypeIDs: string[],
     page: number | null
   ) {
     const itemsPerPage = 10;
@@ -56,12 +59,39 @@ export class JobHelper {
       query = query.where("visa_job.job_sponsored", "=", Boolean(Number(visaStatus)));
     }
 
+    // Experience Filter
+    if (minExp && maxExp) {
+      query = query.where(
+        sql`(visa_job.job_experience_min between ${Number(minExp)} and ${Number(
+          maxExp
+        )} OR visa_job.job_experience_max between ${Number(minExp)} and ${Number(maxExp)})`
+      );
+    }
+
+    // Job Type Filter
+    if (jobTypeIDs.length > 0) {
+      query = query.where((eb) =>
+        eb.or(
+          jobTypeIDs.map((jobType) => {
+            return eb("visa_job.job_type", "=", Number(jobType));
+          })
+        )
+      );
+    }
+
     const result = await query.offset(offset).limit(itemsPerPage).execute();
     return result;
   }
 
   // HACK: This code should be the same as above.
-  async CountJobsByProfile(profileIDs: string[], locationIDs: string[], visaStatus: string | null) {
+  async CountJobsByProfile(
+    profileIDs: string[],
+    locationIDs: string[],
+    visaStatus: string | null,
+    minExp: string | null,
+    maxExp: string | null,
+    jobTypeIDs: string[]
+  ) {
     let query = db
       .selectFrom("visa_job")
       .innerJoin("job_profile", "job_profile.id", "visa_job.selected_profile")
@@ -93,6 +123,26 @@ export class JobHelper {
     // Visa Status Filter
     if (visaStatus) {
       query = query.where("visa_job.job_sponsored", "=", Boolean(Number(visaStatus)));
+    }
+
+    // Experience Filter
+    if (minExp && maxExp) {
+      query = query.where(
+        sql`visa_job.job_experience_min between ${Number(minExp)} AND ${Number(maxExp)}
+        OR visa_job.job_experience_max between ${Number(minExp)} AND ${Number(maxExp)}
+        `
+      );
+    }
+
+    // Job Type Filter
+    if (jobTypeIDs.length > 0) {
+      query = query.where((eb) =>
+        eb.or(
+          jobTypeIDs.map((jobType) => {
+            return eb("visa_job.job_type", "=", Number(jobType));
+          })
+        )
+      );
     }
 
     const result = await query.executeTakeFirst();
