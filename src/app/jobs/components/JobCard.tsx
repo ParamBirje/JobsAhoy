@@ -15,13 +15,13 @@ export default function JobCard({ job }: { job: JobListType; setSelectedJob?: Ca
     <li className="w-full">
       <button
         onClick={handleSelect}
-        className={`w-full bg-opacity-60 bg-primary-lighter hover:bg-primary-lightest px-6 py-3 rounded-lg tracking-wide flex items-start justify-between ${
+        className={`w-full bg-opacity-30 bg-primary-lighter hover:bg-primary-lightest px-6 py-3 rounded-lg tracking-wide flex items-start justify-between ${
           selectedJob == job && "!bg-primary-lightest"
         }`}
       >
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col items-start gap-3">
           <div className="flex flex-col items-start">
-            <h4 className="line-clamp-1">{job.job_title.trim()}</h4>
+            <h4 className="line-clamp-1 text-left">{job.job_title.trim()}</h4>
             <p className="text-sm text-secondary-dark line-clamp-1">{job.job_company}</p>
           </div>
 
@@ -31,11 +31,12 @@ export default function JobCard({ job }: { job: JobListType; setSelectedJob?: Ca
           </div>
         </div>
 
-        <div>
-          <div className="hover:text-accentOrange">
-            <Heart size={20} />
+        {/* FIXME: MAKE this go away when deleted from the job info*/}
+        {job.saved_job_id && (
+          <div>
+            <Heart weight="fill" size={20} />
           </div>
-        </div>
+        )}
       </button>
     </li>
   );

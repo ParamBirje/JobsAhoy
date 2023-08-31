@@ -7,6 +7,7 @@ interface JobListType {
   job_experience_max: number;
   job_type: string;
   created_at: Date;
+  saved_job_id: number | string | null;
 }
 
 interface JobDetailsType extends JobListType {

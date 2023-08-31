@@ -3,16 +3,20 @@
 import { signOut } from "next-auth/react";
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function ProfileButton({ user }: { user: any }) {
-  function handleClick() {
-    signOut({
-      callbackUrl: "/user/logged-out",
-    });
-  }
+  // function handleClick() {
+  //   signOut({
+  //     callbackUrl: "/user/logged-out",
+  //   });
+  // }
 
-  const tempImage =
-    "https://toppng.com//public/uploads/preview/circled-user-icon-user-pro-icon-11553397069rpnu1bqqup.png";
+  const router = useRouter();
+
+  function handleClick() {
+    router.push("/user/profile");
+  }
 
   return (
     <button onClick={handleClick} className="font-medium flex items-center gap-3">

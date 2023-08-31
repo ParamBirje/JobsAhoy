@@ -10,6 +10,7 @@ export async function GetJobs(
   visaStatus: number | null,
   experienceRange: number[],
   jobTypeIDs: number[],
+  userId: number,
   page?: number
 ): Promise<{
   jobsLength: number;
@@ -20,7 +21,9 @@ export async function GetJobs(
       locationIDs.length > 0 ? `&location=${locationIDs.join("&location=")}` : ""
     }${visaStatus != null ? `&visa=${visaStatus}` : ""}${
       experienceRange.length > 0 ? `&minExp=${experienceRange.join("&maxExp=")}` : ""
-    }${jobTypeIDs.length > 0 ? `&type=${jobTypeIDs.join("&type=")}` : ""}&page=${page ?? "1"}`
+    }${jobTypeIDs.length > 0 ? `&type=${jobTypeIDs.join("&type=")}` : ""}&userId=${userId}&page=${
+      page ?? "1"
+    }`
   );
 
   const body = await res.json();
@@ -33,14 +36,15 @@ export async function GetTotalJobsCount(
   locationIDs: number[],
   visaStatus: number | null,
   experienceRange: number[],
-  jobTypeIDs: number[]
+  jobTypeIDs: number[],
+  userId: number
 ) {
   const res = await fetch(
     `http://localhost:3000/api/jobs/count?profile=${profileIDs.join("&profile=")}${
       locationIDs.length > 0 ? `&location=${locationIDs.join("&location=")}` : ""
     }${visaStatus != null ? `&visa=${visaStatus}` : ""}${
       experienceRange.length > 0 ? `&minExp=${experienceRange.join("&maxExp=")}` : ""
-    }${jobTypeIDs.length > 0 ? `&type=${jobTypeIDs.join("&type=")}` : ""}`
+    }${jobTypeIDs.length > 0 ? `&type=${jobTypeIDs.join("&type=")}` : ""}&userId=${userId}`
   );
 
   const body = await res.json();

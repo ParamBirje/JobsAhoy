@@ -86,7 +86,12 @@ export class UserHelper {
       const profilesResult = await db
         .selectFrom("user_profile")
         .innerJoin("job_profile", "job_profile.id", "user_profile.job_profile_id")
-        .select(["user_profile.id", "job_profile.profile_name"])
+        .select([
+          "user_profile.id",
+          "job_profile.profile_name",
+          "user_profile.user_profile_experience",
+          "user_profile.user_profile_desc",
+        ])
         .where("user_profile.user_id", "=", userID)
         .execute();
 

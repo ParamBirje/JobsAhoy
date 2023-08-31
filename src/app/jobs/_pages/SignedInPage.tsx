@@ -76,6 +76,7 @@ export default async function SignedInPage({
       cleanedVisaStatus,
       cleanedExperienceRange,
       cleanedJobTypeList,
+      Number(session?.user.id),
       page
     ),
     GetTotalJobsCount(
@@ -83,7 +84,8 @@ export default async function SignedInPage({
       cleanedLocationList,
       cleanedVisaStatus,
       cleanedExperienceRange,
-      cleanedJobTypeList
+      cleanedJobTypeList,
+      Number(session?.user.id)
     ),
 
     // Filters

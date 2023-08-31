@@ -4,6 +4,10 @@ import { JobHelper } from "../../services/helpers/job";
 const job = new JobHelper();
 
 export async function GET(req: NextRequest) {
+  // FIXME: GET USER ID DIRECTLY THROUGH NEXTAUTH
+
+  // const session = await getServerSession(authOptions);
+
   const { searchParams } = new URL(req.url);
   const profileIDs = searchParams.getAll("profile");
   const locationIDs = searchParams.getAll("location");
@@ -11,12 +15,15 @@ export async function GET(req: NextRequest) {
   const minExp = searchParams.get("minExp");
   const maxExp = searchParams.get("maxExp");
   const jobTypeIDs = searchParams.getAll("type");
+  const userId = searchParams.get("userId");
 
   const page = searchParams.get("page") as unknown as number;
 
   if (
     profileIDs.length > 0 &&
     profileIDs.every((value) => Number(value)) &&
+    userId &&
+    Number(userId) &&
     // Filters
     locationIDs.every((value) => Number(value)) &&
     (visaStatus == "1" || visaStatus == "0" || visaStatus == null) &&
@@ -30,6 +37,7 @@ export async function GET(req: NextRequest) {
       minExp,
       maxExp,
       jobTypeIDs,
+      Number(userId),
       page
     );
 

@@ -64,7 +64,7 @@ export type LocationConnectorUpdate = Updateable<LocationConnectorTable>;
 
 export interface AppliedJobTable {
   id: Generated<number>;
-  applied_date: ColumnType<Date, string | Date, never>;
+  applied_date: ColumnType<Date, string | Date | undefined, never>;
   user_id: number;
   visa_job_id: number;
 }
@@ -74,7 +74,7 @@ export type AppliedJobUpdate = Updateable<AppliedJobTable>;
 
 export interface SavedJobTable {
   id: Generated<number>;
-  saved_date: ColumnType<Date, string | Date, never>;
+  saved_date: ColumnType<Date, string | Date | undefined, never>;
   user_id: number;
   visa_job_id: number;
 }

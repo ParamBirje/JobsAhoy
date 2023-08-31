@@ -10,9 +10,12 @@ export async function GET(req: NextRequest) {
   const visaStatus = searchParams.get("visa");
   const minExp = searchParams.get("minExp");
   const maxExp = searchParams.get("maxExp");
+  const userId = searchParams.get("userId");
   const jobTypeIDs = searchParams.getAll("type");
 
   if (
+    userId &&
+    Number(userId) &&
     profileIDs.length > 0 &&
     profileIDs.every((value) => Number(value)) &&
     // Filters
@@ -27,7 +30,8 @@ export async function GET(req: NextRequest) {
       visaStatus,
       minExp,
       maxExp,
-      jobTypeIDs
+      jobTypeIDs,
+      Number(userId)
     );
 
     return NextResponse.json(

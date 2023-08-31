@@ -1,18 +1,47 @@
-import { Airplane, ArrowRight, Info, MapPin } from "@/lib/Icons";
+"use client";
+
+import { Airplane, ArrowRight, Heart, Info, MapPin } from "@/lib/Icons";
 import parse from "html-react-parser";
 import { useAtom } from "jotai";
 import { selectedJobAtom } from "./JobSection";
 import { useEffect, useState } from "react";
+import Tooltip from "@/components/Tooltip";
+import { useSession } from "next-auth/react";
+import ApplyChecker from "./ApplyChecker";
 
 export default function JobInfo() {
   const [job, setJobDetails] = useState<JobDetailsType>();
   const [selectedJob] = useAtom(selectedJobAtom);
+  const [isSaved, setIsSaved] = useState(false);
+  const [showApplyChecker, setShowApplyChecker] = useState(false);
+
+  const { data: session } = useSession();
+
+  async function handleApplyButton() {
+    window.open(job?.job_link, "_blank");
+    setShowApplyChecker((prev) => !prev);
+  }
+
+  async function handleSaveButton() {
+    try {
+      if (!isSaved) {
+        const res = await SaveJobForLater(Number(session?.user.id), Number(job?.id));
+      } else {
+        const res = await DeleteSaveJob(Number(job?.saved_job_id));
+      }
+
+      setIsSaved((prev) => !prev);
+    } catch (e) {
+      console.log("error in savin job", e);
+    }
+  }
 
   useEffect(() => {
     if (selectedJob) {
       (async function () {
         const result = await GetSelectedJobDetails(selectedJob.id);
         setJobDetails(result);
+        setIsSaved(result.saved_job_id ? true : false);
       })();
     }
   }, [selectedJob]);
@@ -20,9 +49,18 @@ export default function JobInfo() {
   const jobDesc = job?.job_desc as string;
 
   return (
-    <div className="w-2/3 h-[70vh] relative bg-opacity-60 bg-primary-lighter px-8 py-5 rounded-lg tracking-wide flex flex-col gap-5">
+    <div className="w-2/3 h-[70vh] relative bg-opacity-30 bg-primary-lighter px-8 py-5 rounded-lg tracking-wide flex flex-col gap-5">
       {job ? (
         <>
+          {showApplyChecker && (
+            <ApplyChecker
+              enabled={showApplyChecker}
+              setShow={setShowApplyChecker}
+              session={session}
+              job={job}
+            />
+          )}
+
           <div className="flex justify-between">
             <div>
               {/* Main Metadata */}
@@ -57,9 +95,20 @@ export default function JobInfo() {
             </div>
 
             <div className="flex flex-col items-end justify-between gap-5 h-full">
-              <button className="px-8 py-2 text-lg font-medium tracking-wide text-secondary bg-accentOrange-dark rounded-full hover:brightness-110 duration-100">
-                Apply
-              </button>
+              <div className="flex items-center gap-5">
+                <Tooltip text={isSaved ? "Remove From Saved?" : "Save Job For Later?"}>
+                  <button onClick={handleSaveButton} className="hover:text-accentOrange">
+                    <Heart weight={isSaved ? "fill" : "regular"} size={20} />
+                  </button>
+                </Tooltip>
+
+                <button
+                  onClick={handleApplyButton}
+                  className="px-8 py-2 text-lg font-medium tracking-wide text-secondary bg-accentOrange-dark rounded-full hover:brightness-110 duration-100"
+                >
+                  Apply
+                </button>
+              </div>
 
               {job.job_selfapply_link && (
                 <button className="flex items-center text-accent-light gap-1 hover:underline pr-2">
@@ -115,4 +164,27 @@ async function GetSelectedJobDetails(jobId: string | number) {
   const body = await result.json();
 
   return body.jobDetails;
+}
+
+// FIXME: Make this send parameters in body of the request, not in url
+async function SaveJobForLater(userId: number, jobId: number) {
+  const result = await fetch(
+    `http://localhost:3000/api/user/saved-job?userId=${userId}&jobId=${jobId}`,
+    {
+      method: "POST",
+    }
+  );
+  // const body = await result.json();
+  console.log(result.status);
+
+  return result.status;
+}
+
+// FIXME: Make this send parameters in body of the request, not in url
+async function DeleteSaveJob(savedJobId: number) {
+  const result = await fetch(`http://localhost:3000/api/user/saved-job?id=${savedJobId}`, {
+    method: "DELETE",
+  });
+  // const body = await result.json();
+  return result.status;
 }

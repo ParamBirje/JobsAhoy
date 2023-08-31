@@ -9,6 +9,7 @@ export class JobHelper {
     minExp: string | null,
     maxExp: string | null,
     jobTypeIDs: string[],
+    userId: number,
     page: number | null
   ) {
     const itemsPerPage = 10;
@@ -21,6 +22,15 @@ export class JobHelper {
       .innerJoin("job_profile", "job_profile.id", "visa_job.selected_profile")
       .innerJoin("company", "company.id", "visa_job.job_company")
       .innerJoin("job_type", "job_type.id", "visa_job.job_type")
+      .leftJoin("saved_job", (join) =>
+        join.onRef("saved_job.visa_job_id", "=", "visa_job.id").on("saved_job.user_id", "=", userId)
+      )
+      .leftJoin("applied_job", (join) =>
+        join
+          .onRef("applied_job.visa_job_id", "=", "visa_job.id")
+          .on("applied_job.user_id", "=", userId)
+      )
+
       .select([
         "visa_job.id",
         "visa_job.job_title",
@@ -30,6 +40,8 @@ export class JobHelper {
         "visa_job.job_experience_max",
         "job_type.type_name as job_type",
         "visa_job.created_at",
+        "saved_job.id as saved_job_id",
+        "applied_job.id as applied_job_id",
       ])
       .where((eb) =>
         eb.or(
@@ -37,7 +49,9 @@ export class JobHelper {
             return eb("job_profile.id", "=", Number(profile));
           })
         )
-      );
+      )
+
+      .where("applied_job.id", "is", null);
 
     // Filters
 
@@ -90,11 +104,18 @@ export class JobHelper {
     visaStatus: string | null,
     minExp: string | null,
     maxExp: string | null,
-    jobTypeIDs: string[]
+    jobTypeIDs: string[],
+    userId: number
   ) {
     let query = db
       .selectFrom("visa_job")
       .innerJoin("job_profile", "job_profile.id", "visa_job.selected_profile")
+      .leftJoin("applied_job", (join) =>
+        join
+          .onRef("applied_job.visa_job_id", "=", "visa_job.id")
+          .on("applied_job.user_id", "=", userId)
+      )
+
       .select((eb) => eb.fn.countAll().as("totalJobs"))
 
       .where((eb) =>
@@ -103,7 +124,9 @@ export class JobHelper {
             return eb("job_profile.id", "=", Number(profile));
           })
         )
-      );
+      )
+
+      .where("applied_job.id", "is", null);
 
     // Filters
 
@@ -149,11 +172,17 @@ export class JobHelper {
     return result?.totalJobs;
   }
 
-  async GetJobDetails(jobId: number) {
+  async GetJobDetails(jobId: number, userId: number) {
     const result = await db
       .selectFrom("visa_job")
       .innerJoin("company", "company.id", "visa_job.job_company")
       .innerJoin("job_type", "job_type.id", "visa_job.job_type")
+      .leftJoin("saved_job", (join) =>
+        join
+          .onRef("saved_job.visa_job_id", "=", "visa_job.id")
+          .on("saved_job.visa_job_id", "=", jobId)
+      )
+
       .select([
         "visa_job.id",
         "visa_job.job_title",
@@ -167,6 +196,7 @@ export class JobHelper {
         "visa_job.job_sponsored",
         "visa_job.job_selfapply_link",
         "visa_job.created_at",
+        "saved_job.id as saved_job_id",
       ])
       .where("visa_job.id", "=", jobId)
       .executeTakeFirst();

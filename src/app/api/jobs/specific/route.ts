@@ -5,10 +5,11 @@ const jobs = new JobHelper();
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
+  const userId = 2;
   const jobId = searchParams.get("jobId");
 
-  if (jobId) {
-    const result = await jobs.GetJobDetails(jobId as unknown as number);
+  if (Number(jobId) && Number(userId)) {
+    const result = await jobs.GetJobDetails(Number(jobId), Number(userId));
 
     if (result) {
       return NextResponse.json(
