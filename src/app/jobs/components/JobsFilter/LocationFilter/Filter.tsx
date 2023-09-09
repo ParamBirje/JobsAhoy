@@ -65,6 +65,7 @@ export default function LocationFilter({ optionsList }: { optionsList: LocationT
     const checkedOptions = filterList.filter((option) => option.checked);
     const params = new URLSearchParams(searchParams.toString());
     params.delete("location");
+    params.delete("page");
 
     checkedOptions.forEach((location) => params.append("location", location.id.toString()));
     router.push("/jobs?" + params.toString());
@@ -86,9 +87,9 @@ export default function LocationFilter({ optionsList }: { optionsList: LocationT
       {showOptions && (
         <div
           ref={componentRef}
-          className="z-[1] flex flex-col gap-2 absolute left-0 top-[3rem] rounded-md px-2 py-2 border-[1.5px] bg-[#0A1022] border-primary-lightest min-w-full"
+          className="z-[1] flex flex-col gap-2 absolute left-0 top-[3rem] rounded-md px-2 py-2 border-[1.5px] bg-[#0A1022] border-primary-lightest min-w-full max-h-[18em]"
         >
-          <ul className="flex flex-col gap-1 w-full">
+          <ul className="flex flex-col gap-1 w-full h-full overflow-y-auto">
             {filterList.map((location, index) => {
               return (
                 <Option

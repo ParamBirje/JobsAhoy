@@ -25,7 +25,7 @@ export default function JobSection({
   useEffect(() => {
     setJobItemsPerPage(jobsPerPageLimit);
     setTotalJobsCount(totalJobs);
-  }, []);
+  }, [totalJobs]);
 
   return (
     <div className="flex gap-3">

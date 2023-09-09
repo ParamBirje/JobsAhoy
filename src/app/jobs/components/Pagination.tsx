@@ -11,6 +11,7 @@ export default function Pagination() {
   const jobsPerPage = jobItemsPerPage;
 
   const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams.toString());
   const currentPage = Number(searchParams.get("page")) || 1;
   const totalPages = Math.ceil(totalJobs / jobsPerPage);
 
@@ -25,14 +26,20 @@ export default function Pagination() {
     if (currentPage + 1 > totalPages) return;
 
     const newPage = currentPage + 1;
-    router.push(`/jobs?page=${newPage}`);
+
+    params.delete("page");
+    params.append("page", String(newPage));
+    router.push(`/jobs?` + params.toString());
   }
 
   function handlePrev() {
-    if (currentPage - 1 >= 0) return;
+    if (currentPage - 1 <= 0) return;
 
     const newPage = currentPage - 1;
-    router.push(`/jobs?page=${newPage}`);
+
+    params.delete("page");
+    params.append("page", String(newPage));
+    router.push(`/jobs?` + params.toString());
   }
 
   return (
@@ -63,9 +70,16 @@ export default function Pagination() {
 }
 
 function PageNumber({ isActive, pageNumber }: { isActive?: boolean; pageNumber: number }) {
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams.toString());
+
+  params.delete("page");
+  params.append("page", String(pageNumber));
+  const newUrlParams = params.toString();
+
   return (
     <li className={isActive ? "text-secondary font-medium" : ""}>
-      {isActive ? pageNumber : <Link href={`/jobs?page=${pageNumber}`}>{pageNumber}</Link>}
+      {isActive ? pageNumber : <Link href={`/jobs?` + newUrlParams}>{pageNumber}</Link>}
     </li>
   );
 }

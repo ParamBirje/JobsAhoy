@@ -22,6 +22,7 @@ export class JobHelper {
       .innerJoin("job_profile", "job_profile.id", "visa_job.selected_profile")
       .innerJoin("company", "company.id", "visa_job.job_company")
       .innerJoin("job_type", "job_type.id", "visa_job.job_type")
+
       .leftJoin("saved_job", (join) =>
         join.onRef("saved_job.visa_job_id", "=", "visa_job.id").on("saved_job.user_id", "=", userId)
       )
@@ -43,6 +44,7 @@ export class JobHelper {
         "saved_job.id as saved_job_id",
         "applied_job.id as applied_job_id",
       ])
+
       .where((eb) =>
         eb.or(
           profileIDs.map((profile) => {
@@ -110,6 +112,9 @@ export class JobHelper {
     let query = db
       .selectFrom("visa_job")
       .innerJoin("job_profile", "job_profile.id", "visa_job.selected_profile")
+      .innerJoin("company", "company.id", "visa_job.job_company")
+      .innerJoin("job_type", "job_type.id", "visa_job.job_type")
+
       .leftJoin("applied_job", (join) =>
         join
           .onRef("applied_job.visa_job_id", "=", "visa_job.id")
@@ -151,9 +156,9 @@ export class JobHelper {
     // Experience Filter
     if (minExp && maxExp) {
       query = query.where(
-        sql`visa_job.job_experience_min between ${Number(minExp)} AND ${Number(maxExp)}
-        OR visa_job.job_experience_max between ${Number(minExp)} AND ${Number(maxExp)}
-        `
+        sql`(visa_job.job_experience_min between ${Number(minExp)} and ${Number(
+          maxExp
+        )} OR visa_job.job_experience_max between ${Number(minExp)} and ${Number(maxExp)})`
       );
     }
 

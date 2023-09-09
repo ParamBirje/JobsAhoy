@@ -142,12 +142,14 @@ export default function JobInfo() {
                   <ArrowRight size={20} />
                 </button>
               </div>
-              <div className="mt-5">
+
+              {/* ABOUT THE COMPANY */}
+              {/* <div className="mt-5">
                 <h5 className="text-md font-semibold">About Marriott Hotels</h5>
                 <p className="text-secondary-dark">
                   This is a description about an hotel that goes by the name of Marriott.
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </>

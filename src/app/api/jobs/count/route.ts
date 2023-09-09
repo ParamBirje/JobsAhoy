@@ -14,10 +14,10 @@ export async function GET(req: NextRequest) {
   const jobTypeIDs = searchParams.getAll("type");
 
   if (
-    userId &&
-    Number(userId) &&
     profileIDs.length > 0 &&
     profileIDs.every((value) => Number(value)) &&
+    userId &&
+    Number(userId) &&
     // Filters
     locationIDs.every((value) => Number(value)) &&
     (visaStatus == "1" || visaStatus == "0" || visaStatus == null) &&

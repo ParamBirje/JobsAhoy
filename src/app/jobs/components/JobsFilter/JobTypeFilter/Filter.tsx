@@ -65,6 +65,7 @@ export default function JobTypeFilter({ optionsList }: { optionsList: JobTypeTyp
     const checkedOptions = filterList.filter((option) => option.checked);
     const params = new URLSearchParams(searchParams.toString());
     params.delete("type");
+    params.delete("page");
 
     checkedOptions.forEach((location) => params.append("type", location.id.toString()));
     router.push("/jobs?" + params.toString());

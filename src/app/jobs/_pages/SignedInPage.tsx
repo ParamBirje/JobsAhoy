@@ -48,7 +48,7 @@ export default async function SignedInPage({
     redirect(`/jobs?profile=${profilesList.map((profile) => profile.id).join("&profile=")}`);
   }
 
-  // Other filters (these filters are not necessary in the url, hence dont need redirects.)
+  // Other filters (these filters are not required in the url, hence dont need redirects.)
   if (searchParams.location) {
     searchParams.location = [...searchParams.location];
     searchParams.location.forEach((locationID) => cleanedLocationList.push(Number(locationID)));
@@ -65,7 +65,7 @@ export default async function SignedInPage({
 
   if (searchParams.type) {
     searchParams.type = [...searchParams.type];
-    searchParams.type.forEach((jobTypeID) => cleanedLocationList.push(Number(jobTypeID)));
+    searchParams.type.forEach((jobTypeID) => cleanedJobTypeList.push(Number(jobTypeID)));
   }
 
   // Promises

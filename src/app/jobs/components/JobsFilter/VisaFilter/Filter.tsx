@@ -77,6 +77,7 @@ export default function VisaFilter() {
     const checkedOptions = filterList.filter((option) => option.checked);
     const params = new URLSearchParams(searchParams.toString());
     params.delete("visa");
+    params.delete("page");
 
     if (checkedOptions.length == 1) {
       checkedOptions.forEach((visaStatus) =>

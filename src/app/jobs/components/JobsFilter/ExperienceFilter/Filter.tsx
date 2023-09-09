@@ -53,6 +53,7 @@ export default function ExperienceFilter({ min, max }: { min: number; max: numbe
     const params = new URLSearchParams(searchParams.toString());
     params.delete("minExp");
     params.delete("maxExp");
+    params.delete("page");
 
     if (minimumExp != min || maximumExp != max) {
       params.append("minExp", minimumExp.toString());

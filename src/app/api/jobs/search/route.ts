@@ -24,6 +24,7 @@ export async function GET(req: NextRequest) {
     profileIDs.every((value) => Number(value)) &&
     userId &&
     Number(userId) &&
+    //
     // Filters
     locationIDs.every((value) => Number(value)) &&
     (visaStatus == "1" || visaStatus == "0" || visaStatus == null) &&
