@@ -12,7 +12,12 @@ export default async function ProfilePage() {
     redirect("/user/login");
   }
 
-  const views = [<UserView />, <ProfilesView />, <SavedJobsView />, <AppliedJobsView />];
+  const views = [
+    <UserView key={1} />,
+    <ProfilesView key={2} />,
+    <SavedJobsView key={3} />,
+    <AppliedJobsView key={4} />,
+  ];
 
   return (
     <main className="max-w-7xl mx-auto px-5 h-[85vh] flex justify-center items-center">

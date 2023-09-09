@@ -30,7 +30,7 @@ export default function JobSection({
   return (
     <div className="flex gap-3">
       {/* Jobs List */}
-      <ul className="w-1/3 h-[76vh overflow-y-auto flex flex-col gap-3">
+      <ul className="w-1/3 h-[70vh] overflow-y-auto flex flex-col gap-3">
         {jobsList.length > 0 ? (
           jobsList.map((job) => {
             return <JobCard job={job} key={job.id} />;

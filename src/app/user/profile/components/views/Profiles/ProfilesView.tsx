@@ -16,7 +16,7 @@ export default async function ProfilesView() {
   return (
     <div className="grid grid-cols-2 gap-3">
       {result.profilesList.map((profile: IProfile) => {
-        return <Item profile={profile} />;
+        return <Item key={profile.id} profile={profile} />;
       })}
 
       <button className="bg-primary-lighter bg-opacity-30 rounded-md px-6 py-4 w-full flex items-center justify-center gap-5 hover:bg-opacity-50 duration-100">

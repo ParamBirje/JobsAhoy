@@ -29,8 +29,6 @@ export default async function OnboardingPage({ searchParams }: { searchParams: {
       return body.callbackUrl;
     }
 
-    console.log(body);
-
     return null;
   }
 

@@ -21,7 +21,7 @@ export default function UserView() {
           />
         </div>
       </div>
-
+      
       <div className="flex justify-end items-center">
         <button className="duration-100 flex items-center gap-3 px-6 py-2 bg-accent hover:bg-accent-light rounded-full">
           Apply

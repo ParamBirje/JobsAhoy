@@ -7,7 +7,6 @@ export default async function JobsPage({ searchParams }: { searchParams: JobsPag
   const session = await getServerSideSession();
 
   if (session) {
-    console.log(session.user.id);
     // try {
     const result = await fetch(
       `http://localhost:3000/api/user/check-profile?id=${session.user?.id}`,

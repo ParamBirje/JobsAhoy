@@ -145,7 +145,7 @@ export default function JobInfo() {
               <div className="mt-5">
                 <h5 className="text-md font-semibold">About Marriott Hotels</h5>
                 <p className="text-secondary-dark">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore, possimus?
+                  This is a description about an hotel that goes by the name of Marriott.
                 </p>
               </div>
             </div>
