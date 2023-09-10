@@ -95,6 +95,8 @@ export class JobHelper {
       );
     }
 
+    console.log(query.compile().sql);
+
     const result = await query.offset(offset).limit(itemsPerPage).execute();
     return result;
   }

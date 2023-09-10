@@ -10,7 +10,7 @@ import { useSession } from "next-auth/react";
 import ApplyChecker from "./ApplyChecker";
 
 export default function JobInfo() {
-  const [job, setJobDetails] = useState<JobDetailsType>();
+  const [job, setJobDetails] = useState<JobDetailsType | null>();
   const [selectedJob] = useAtom(selectedJobAtom);
   const [isSaved, setIsSaved] = useState(false);
   const [showApplyChecker, setShowApplyChecker] = useState(false);
@@ -43,6 +43,8 @@ export default function JobInfo() {
         setJobDetails(result);
         setIsSaved(result.saved_job_id ? true : false);
       })();
+    } else {
+      setJobDetails(null);
     }
   }, [selectedJob]);
 

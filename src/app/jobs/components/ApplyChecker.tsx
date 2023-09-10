@@ -1,5 +1,8 @@
+import { useAtom } from "jotai";
 import { Session } from "next-auth";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
+import { selectedJobAtom } from "./JobSection";
 
 export default function ApplyChecker({
   enabled,
@@ -13,6 +16,8 @@ export default function ApplyChecker({
   job: JobDetailsType;
 }) {
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+  const [selectedJob, setSelectedJob] = useAtom(selectedJobAtom);
 
   // Listening to clicks outside of the profile options
   const componentRef = useRef<HTMLDivElement | null>(null);
@@ -51,6 +56,9 @@ export default function ApplyChecker({
       console.log("Job tracking status:", res.status);
       setError(null);
       setShow(!enabled);
+
+      setSelectedJob(null);
+      router.refresh();
     } catch (e) {
       console.log("applied button error", e);
       setError("Process failed.");
