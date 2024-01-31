@@ -2,11 +2,16 @@ import GradientDivider from "../GradientDivider";
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="max-w-7xl mx-auto px-5 mt-[8em] my-[4em]">
+    <section
+      id="testimonials"
+      className="max-w-7xl mx-auto px-5 mt-[8em] my-[4em]"
+    >
       <div className="flex flex-col gap-[4em]">
         <GradientDivider />
 
-        <h3 className="text-center text-5xl font-bold">What People Are Saying</h3>
+        <h3 className="text-center text-5xl font-bold">
+          What People Are Saying
+        </h3>
 
         <div className="flex">
           <div
