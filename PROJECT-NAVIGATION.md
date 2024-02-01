@@ -16,6 +16,7 @@ Then other miscellaneous functions that we would use and integrate with the proj
 
 - `api/` route (REST API functions)
 - Types (should live with the component its meant for)
+- Static assets (images)
 - others
 
 #### General Rule of Thumb
@@ -43,3 +44,43 @@ type MyComponentProps = {};
 ```
 
 **As soon as the component is required by another route (not a child in the path of the original route), the component should be placed in the `src/components` path.**
+
+### Helper functions
+
+Let's take an example of a helper function on the login page that lives in the directory path as `src/app/login` used only by `page.tsx` inside.
+
+```
+function MyHelper(){
+    // ...
+}
+```
+
+The component should be placed in a separate folder inside `src/app/login/_lib` wit it's PropTypes and then be imported into `page.tsx`
+
+```
+export default function MyHelper({}: MyHelperParams){
+    // ...
+}
+
+type MyHelperParams = {};
+```
+
+**As soon as the helper is required by another route (not a child in the path of the original route), the helper should be placed in the `src/lib` path.**
+
+### Types
+
+The types/prop types used in that file should stay in the same file unless used by other components.
+- If types are used by other components in the **same directory path** for eg. `src/app/about/MyComponent1.tsx`, `src/app/about/MyComponent2.tsx` and `src/app/about/_components/MyComponent3.tsx` are using the type, we put the types in `types.ts` under that path `src/app/about/types.ts`.
+- If the type is accessed elsewhere in multiple routes, the types should go in `src/types.ts`.
+
+### Static Assets
+
+Let's take an example of an image as our static asset.
+
+The images used in a single file should stay in the same file path unless used by other components. eg. If `example.png` is used by a component in `src/app/about` then the image should be placed inside `src/app/about/_lib/assets`.
+
+- If images are used by other components in the **same directory path** for eg. `src/app/about/MyComponent1.tsx`, `src/app/about/MyComponent2.tsx` and `src/app/about/_components/MyComponent3.tsx` are using the type, we put the image in `src/app/about/_lib/assets`.
+
+- If the image is accessed elsewhere in multiple routes, the types should go in `src/lib/assets`.
+  
+## WHAT IF thers a component inside `example/child/component` and the main component is in `example/component`
