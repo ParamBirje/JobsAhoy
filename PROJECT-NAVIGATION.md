@@ -82,5 +82,8 @@ The images used in a single file should stay in the same file path unless used b
 - If images are used by other components in the **same directory path** for eg. `src/app/about/MyComponent1.tsx`, `src/app/about/MyComponent2.tsx` and `src/app/about/_components/MyComponent3.tsx` are using the type, we put the image in `src/app/about/_lib/assets`.
 
 - If the image is accessed elsewhere in multiple routes, the types should go in `src/lib/assets`.
-  
+
+### API routes `/api`
+Always try to incorporate the backend functions using Nextjs' Server Actions. Only if the function is needed by another app outside of the Next app, then using `/api` route function is advisable.
+
 ## WHAT IF thers a component inside `example/child/component` and the main component is in `example/component`
