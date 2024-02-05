@@ -16,6 +16,15 @@ We personalize your job-seeking journey abroad by centrally **curating the jobs 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Tech Stack
+Built using,
+- Next.js
+- React.js
+- Typescript
+- Tailwind CSS
+- Kysely
+- MySQL
+
 ## Getting Started
 
 First, run the development server:
