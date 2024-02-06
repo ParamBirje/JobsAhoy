@@ -1,3 +1,16 @@
+<!-- PROJECT LOGO -->
+<p align="center">
+  <a href="https://github.com/calcom/cal.com">
+   <img src="https://github.com/ParamBirje/JobsAhoy/assets/87022870/6171210e-21bb-45e9-9b72-c286ba79af01.jpg" alt="Logo">
+  </a>
+
+  <h3 align="center">JobsAhoy</h3>
+
+  <p align="center">
+    Finding a job abroad made simple.
+  </p>
+</p>
+
 <!-- ABOUT THE PROJECT -->
 
 ## About the Project
