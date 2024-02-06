@@ -8,6 +8,11 @@
 
   <p align="center">
     Finding a job abroad made simple.
+    <br />
+    <br />
+    <a href="https://google.com">Website</a>
+    ·
+    <a href="https://github.com/ParamBirje/JobsAhoy/issues">Issues</a>
   </p>
 </p>
 
