@@ -1,16 +1,15 @@
 import Link from "next/link";
-import SignUpForm from "./Form";
+import SignUpForm from "./_components/Form";
 import SocialLoginButtons from "@/components/SocialButtons";
 import getServerSideSession from "@/lib/auth/ServerSession";
 import { redirect } from "next/navigation";
 
 export default async function CreateAccountPage() {
-  
   const session = await getServerSideSession();
   if (session?.user) {
     redirect("/");
   }
-  
+
   return (
     <main className="max-w-7xl mx-auto px-5 flex items-center justify-center min-h-[80vh]">
       <div className="w-[80%] flex flex-col gap-10">
