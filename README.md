@@ -1,6 +1,6 @@
 <!-- PROJECT LOGO -->
 <p align="center">
-  <a href="https://github.com/calcom/cal.com">
+  <a href="https://github.com">
    <img src="https://github.com/ParamBirje/JobsAhoy/assets/87022870/6171210e-21bb-45e9-9b72-c286ba79af01.jpg" alt="Logo">
   </a>
 
@@ -10,7 +10,7 @@
     Finding a job abroad made simple.
     <br />
     <br />
-    <a href="https://google.com">Website</a>
+    <a href="https://github.com">Website</a>
     ·
     <a href="https://github.com/ParamBirje/JobsAhoy/issues">Issues</a>
   </p>
