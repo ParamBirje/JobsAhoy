@@ -27,7 +27,7 @@ All components/functions used _locally_ in a specific route will be under that r
 
 Let's take an example of a UI component on the login page that lives in the directory path as `src/app/login` used only by `page.tsx` inside.
 
-```
+```ts
 function MyComponent(){
     // ...
 }
@@ -35,7 +35,7 @@ function MyComponent(){
 
 The component should be placed in a separate folder inside `src/app/login/_components` wit it's PropTypes and then be imported into `page.tsx`
 
-```
+```ts
 export default function MyComponent({}: MyComponentProps){
     // ...
 }
@@ -49,7 +49,7 @@ type MyComponentProps = {};
 
 Let's take an example of a helper function on the login page that lives in the directory path as `src/app/login` used only by `page.tsx` inside.
 
-```
+```ts
 function MyHelper(){
     // ...
 }
@@ -57,7 +57,7 @@ function MyHelper(){
 
 The component should be placed in a separate folder inside `src/app/login/_lib` wit it's PropTypes and then be imported into `page.tsx`
 
-```
+```ts
 export default function MyHelper({}: MyHelperParams){
     // ...
 }
