@@ -1,10 +1,10 @@
 import getServerSideSession from "@/lib/auth/ServerSession";
 import { redirect } from "next/navigation";
-import MainSection from "./components/MainSection";
-import UserView from "./components/views/UserView";
-import ProfilesView from "./components/views/Profiles/ProfilesView";
-import SavedJobsView from "./components/views/SavedJobs/SavedJobsView";
-import AppliedJobsView from "./components/views/AppliedJobs/AppliedJobsView";
+import MainSection from "./_components/MainSection";
+import UserView from "./_components/views/UserView";
+import ProfilesView from "./_components/views/Profiles/ProfilesView";
+import SavedJobsView from "./_components/views/SavedJobs/SavedJobsView";
+import AppliedJobsView from "./_components/views/AppliedJobs/AppliedJobsView";
 
 export default async function ProfilePage() {
   const session = await getServerSideSession();
