@@ -69,7 +69,9 @@ type MyHelperParams = {};
 
 ### Types
 
-The types/prop types used in that file should stay in the same file unless used by other components.
+The prop types used in that file should stay in the same file unless used by other components.
+Meanwhile other types, will be in `types.ts` under the same directory where it's been used.
+
 - If types are used by other components in the **same directory path** for eg. `src/app/about/MyComponent1.tsx`, `src/app/about/MyComponent2.tsx` and `src/app/about/_components/MyComponent3.tsx` are using the type, we put the types in `types.ts` under that path `src/app/about/types.ts`.
 - If the type is accessed elsewhere in multiple routes, the types should go in `src/types.ts`.
 
@@ -84,6 +86,7 @@ The images used in a single file should stay in the same file path unless used b
 - If the image is accessed elsewhere in multiple routes, the types should go in `src/lib/assets`.
 
 ### API routes `/api`
+
 Always try to incorporate the backend functions using Nextjs' Server Actions. Only if the function is needed by another app outside of the Next app, then using `/api` route function is advisable.
 
 ## WHAT IF thers a component inside `example/child/component` and the main component is in `example/component`
