@@ -16,7 +16,7 @@ export default function Links() {
       url: "/jobs",
     },
     {
-      name: "Prepare",
+      name: "Blog",
       url: "/blog",
     },
   ];
@@ -27,7 +27,9 @@ export default function Links() {
         return (
           <li key={index}>
             <Link
-              className={`${pathname == link.url && "text-accentOrange"} hover:text-accentOrange`}
+              className={`${
+                pathname == link.url && "text-accentOrange"
+              } hover:text-accentOrange`}
               href={link.url}
             >
               {link.name}
