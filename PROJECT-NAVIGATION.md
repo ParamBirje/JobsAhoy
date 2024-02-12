@@ -55,7 +55,7 @@ function MyHelper(){
 }
 ```
 
-The component should be placed in a separate folder inside `src/app/login/_lib` with it's PropTypes and then be imported into `page.tsx`
+The component should be placed in a separate folder inside `src/app/login/_components/util` with it's PropTypes and then be imported into `page.tsx`
 
 ```ts
 export default function MyHelper({}: MyHelperParams){
@@ -65,7 +65,7 @@ export default function MyHelper({}: MyHelperParams){
 type MyHelperParams = {};
 ```
 
-**As soon as the helper is required by another route (not a child in the path of the original route), the helper should be placed in the `src/lib` path.**
+**As soon as the helper is required by another route (not a child in the path of the original route), the helper should be placed in the `src/components/util` path.**
 
 ## Types
 
@@ -83,7 +83,7 @@ The images used in a single file should stay in the same file path unless used b
 
 - If images are used by other components in the **same directory path** for eg. `src/app/about/MyComponent1.tsx`, `src/app/about/MyComponent2.tsx` and `src/app/about/_components/MyComponent3.tsx` are using the type, we put the image in `src/app/about/_lib/assets`.
 
-- If the image is accessed elsewhere in multiple routes, the types should go in `src/lib/assets`.
+- If the image is accessed elsewhere in multiple routes, the assets should go in `src/lib/assets`.
 
 ## API routes `/api`
 
