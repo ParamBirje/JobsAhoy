@@ -1,5 +1,5 @@
 import { ArrowRight, Briefcase, CaretDown, Heart, MapPin } from "@/lib/Icons";
-import JobCard from "../components/JobCard";
+import JobCard from "../JobCard";
 
 export default function SignedOutPage() {
   return (

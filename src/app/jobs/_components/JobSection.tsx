@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import JobCard from "../components/JobCard";
-import JobInfo from "../components/JobInfo";
+import JobCard from "./JobCard";
+import JobInfo from "./JobInfo";
 import Pagination from "./Pagination";
 import { atom, useAtom } from "jotai";
 
@@ -36,7 +36,9 @@ export default function JobSection({
             return <JobCard job={job} key={job.id} />;
           })
         ) : (
-          <p className="mt-4 tracking-wide text-secondary-dark">No jobs found for this search.</p>
+          <p className="mt-4 tracking-wide text-secondary-dark">
+            No jobs found for this search.
+          </p>
         )}
 
         {/* Pagination */}

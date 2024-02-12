@@ -1,15 +1,15 @@
 import getServerSideSession from "@/lib/auth/ServerSession";
-import JobSection from "../components/JobSection";
-import ProfileSwitcher from "../components/ProfileFilter/ProfileSwitcher";
+import JobSection from "../JobSection";
+import ProfileSwitcher from "../ProfileFilter/ProfileSwitcher";
 import { redirect } from "next/navigation";
-import Filters from "../components/Filters";
+import Filters from "../Filters";
 import {
   GetAllJobTypes,
   GetAllLocations,
   GetJobs,
   GetTotalJobsCount,
   GetUserProfiles,
-} from "./helpers/SignedInPageHelpers";
+} from "../utils/SignedInPageHelpers";
 
 export default async function SignedInPage({
   searchParams,
@@ -24,9 +24,8 @@ export default async function SignedInPage({
   const {
     selectedProfile,
     profilesList,
-  }: { selectedProfile: UserProfileType; profilesList: UserProfileType[] } = await GetUserProfiles(
-    session?.user?.id as number
-  );
+  }: { selectedProfile: UserProfileType; profilesList: UserProfileType[] } =
+    await GetUserProfiles(session?.user?.id as number);
 
   // Getting the searchParams to change the content (for using filters)
   let cleanedProfileList: number[] = [];
@@ -38,34 +37,49 @@ export default async function SignedInPage({
   // Getting profile filter params
   if (searchParams.profile) {
     searchParams.profile = [...searchParams.profile];
-    searchParams.profile.forEach((profileID) => cleanedProfileList.push(Number(profileID)));
+    searchParams.profile.forEach((profileID) =>
+      cleanedProfileList.push(Number(profileID))
+    );
 
     // --- HACK: Uncomment this if you want to make selectedProfile default with other profiles
     // if (!searchParams.profile.includes(selectedProfile.id.toString())) {
     //   cleanedProfileList.push(Number(selectedProfile.id));
     // }
   } else {
-    redirect(`/jobs?profile=${profilesList.map((profile) => profile.id).join("&profile=")}`);
+    redirect(
+      `/jobs?profile=${profilesList
+        .map((profile) => profile.id)
+        .join("&profile=")}`
+    );
   }
 
   // Other filters (these filters are not required in the url, hence dont need redirects.)
   if (searchParams.location) {
     searchParams.location = [...searchParams.location];
-    searchParams.location.forEach((locationID) => cleanedLocationList.push(Number(locationID)));
+    searchParams.location.forEach((locationID) =>
+      cleanedLocationList.push(Number(locationID))
+    );
   }
 
-  if (searchParams.visa && (searchParams.visa == "1" || searchParams.visa == "0")) {
+  if (
+    searchParams.visa &&
+    (searchParams.visa == "1" || searchParams.visa == "0")
+  ) {
     cleanedVisaStatus = Number(searchParams.visa);
   }
 
   if (searchParams.maxExp && searchParams.minExp) {
     const tempExperienceRange = [searchParams.minExp, searchParams.maxExp];
-    tempExperienceRange.forEach((range) => cleanedExperienceRange.push(Number(range)));
+    tempExperienceRange.forEach((range) =>
+      cleanedExperienceRange.push(Number(range))
+    );
   }
 
   if (searchParams.type) {
     searchParams.type = [...searchParams.type];
-    searchParams.type.forEach((jobTypeID) => cleanedJobTypeList.push(Number(jobTypeID)));
+    searchParams.type.forEach((jobTypeID) =>
+      cleanedJobTypeList.push(Number(jobTypeID))
+    );
   }
 
   // Promises
