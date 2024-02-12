@@ -55,7 +55,7 @@ function MyHelper(){
 }
 ```
 
-The component should be placed in a separate folder inside `src/app/login/_components/util` with it's PropTypes and then be imported into `page.tsx`
+The component should be placed in a separate folder inside `src/app/login/_components/utils` with it's PropTypes and then be imported into `page.tsx`
 
 ```ts
 export default function MyHelper({}: MyHelperParams){
@@ -65,7 +65,7 @@ export default function MyHelper({}: MyHelperParams){
 type MyHelperParams = {};
 ```
 
-**As soon as the helper is required by another route (not a child in the path of the original route), the helper should be placed in the `src/components/util` path.**
+**As soon as the helper is required by another route (not a child in the path of the original route), the helper should be placed in the `src/components/utils` path.**
 
 ## Types
 
