@@ -1,9 +1,13 @@
 import getServerSideSession from "@/lib/auth/ServerSession";
 import { redirect } from "next/navigation";
-import SignedInPage from "./_pages/SignedInPage";
-import SignedOutPage from "./_pages/SignedOutPage";
+import SignedInPage from "./_components/views/SignedInPage";
+import SignedOutPage from "./_components/views/SignedOutPage";
 
-export default async function JobsPage({ searchParams }: { searchParams: JobsPageSearchParams }) {
+export default async function JobsPage({
+  searchParams,
+}: {
+  searchParams: JobsPageSearchParams;
+}) {
   const session = await getServerSideSession();
 
   if (session) {
