@@ -1,7 +1,15 @@
 import React from "react";
 import Link from "next/link";
+import getServerSideSession from "@/lib/auth/ServerSession";
+import { redirect } from "next/navigation";
 
-export default function LoggedOutPage() {
+export default async function LoggedOutPage() {
+  // If logged in, redirect to /jobs dashboard
+  const session = await getServerSideSession();
+  if (session?.user) {
+    redirect("/jobs");
+  }
+
   return (
     <main className="max-w-7xl mx-auto px-5 flex items-center justify-center min-h-[80vh]">
       <div className="w-[80%] flex flex-col gap-10">
