@@ -1,59 +1,37 @@
 import { ArrowRight, Briefcase, CaretDown, Heart, MapPin } from "@/lib/Icons";
 import JobCard from "../JobCard";
+import Link from "next/link";
 
 export default function SignedOutPage() {
   return (
-    <main className="max-w-7xl mx-auto px-5 h-[85vh]">
+    <main className="max-w-7xl mx-auto px-5 py-5 h-[80vh]">
       <div className="flex flex-col gap-10 h-full">
-        <div className="flex flex-col gap-3 my-1">
-          {/* Search Bar */}
-          <div className="flex items-stretch gap-3">
-            {/* Search Bar */}
-            <div className="w-full flex items-center rounded-lg bg-primary-lightest">
-              <div className="flex items-center w-full px-5">
-                <Briefcase size={26} weight="fill" />
-                <input
-                  placeholder="eg. Software Engineer"
-                  className="placeholder:text-slate-200 placeholder:opacity-70 w-full py-3 px-5 bg-transparent outline-none"
-                  type="text"
-                />
-              </div>
-
-              <div className="flex items-center w-[91%] px-5">
-                <MapPin size={26} weight="fill" />
-                <input
-                  placeholder="Location"
-                  className="placeholder:text-slate-200 placeholder:opacity-70 w-full py-3 px-5 bg-transparent outline-none"
-                  type="text"
-                />
-                <CaretDown className="cursor-pointer" size={26} weight="fill" />
-              </div>
-            </div>
-            <button className="px-7 py-3 bg-accent rounded-md tracking-wide font-medium hover:bg-accent-light">
-              Search
-            </button>
+        <div className="flex justify-between items-center gap-4 bg-primary-lighter rounded-md px-6 py-4">
+          <div className="flex flex-col gap-3">
+            <h2 className="text-2xl font-medium">
+              Get access to all the relevant jobs to your role.
+            </h2>
+            <p className="w-2/3 text-secondary opacity-90 tracking-wide">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Reiciendis molestias molestiae excepturi rerum? Velit error quidem
+              qui minima et distinctio ratione ut? Minus, aperiam tempore.
+            </p>
           </div>
 
-          {/* Filters */}
-          <div className="font-light text-sm flex items-center gap-3">
-            <button className="bg-primary-lightest px-6 py-2 rounded-full duration-100 border border-transparent hover:bg-primary-light hover:border-secondary tracking-wider flex items-center gap-3">
-              <p>Experience Level</p>
-              <CaretDown size={20} />
-            </button>
-            <button className="bg-primary-lightest px-6 py-2 rounded-full duration-100 border border-transparent hover:bg-primary-light hover:border-secondary tracking-wider">
-              Job Type
-            </button>
+          <div className="w-1/3 flex flex-col items-center gap-3">
+            <Link href="/user/login">
+              <button className="bg-accent rounded-full px-6 py-2 font-medium hover:bg-accent-light duration-100 mt-1">
+                Create A Free Account
+              </button>
+            </Link>
+            <Link className="text-sm" href="/user/login">
+              Have an account? Sign in.
+            </Link>
           </div>
         </div>
 
-        <div className="flex gap-3">
-          {/* Jobs List */}
-          <ul className="w-1/3 h-[76vh] overflow-y-auto flex flex-col gap-3">
-            {/* JOB CARD HERE */}
-          </ul>
-
-          {/* Job Details INFO here */}
-        </div>
+        {/* Dummy Job Section */}
+        {/* <JobSection totalJobs={totalJobs} jobsList={jobsData.jobsList} /> */}
       </div>
     </main>
   );
