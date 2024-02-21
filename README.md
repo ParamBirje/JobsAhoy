@@ -26,16 +26,18 @@
 
 Want to relocate to your favourite countries? Feeling exhausted searching for visa sponsored jobs? Have tried every job board out there?
 
-Well, this is where JobsAhoy comes in. Curating **visa-sponsored** jobs that match your profile according to the experience you bring and the skills you possess. No more wasting time on searching the job you want on each and every job board, managing multiple alerts and following an enormous list of company's career pages. 
+Well, this is where JobsAhoy comes in. Curating **visa-sponsored** jobs that match your profile according to the experience you bring and the skills you possess. No more wasting time on searching the job you want on each and every job board, managing multiple alerts and following an enormous list of company's career pages.
 
-We personalize your job-seeking journey abroad by centrally **curating the jobs you want from the companies that want you**, without the clutter. 
+We personalize your job-seeking journey abroad by centrally **curating the jobs you want from the companies that want you**, without the clutter.
 
 <!-- Setting up the project -->
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Tech Stack
+
 Built using,
+
 - Next.js
 - React.js
 - Typescript
@@ -43,20 +45,15 @@ Built using,
 - Kysely
 - MySQL
 
-## Getting Started
+## Running locally
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- Manually
+- Docker
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Contributing
+
+Unfortunately at the moment, the project is **not** open for contributions.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
