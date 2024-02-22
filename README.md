@@ -30,10 +30,6 @@ Well, this is where JobsAhoy comes in. Curating **visa-sponsored** jobs that mat
 
 We personalize your job-seeking journey abroad by centrally **curating the jobs you want from the companies that want you**, without the clutter.
 
-<!-- Setting up the project -->
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Tech Stack
 
 Built using,
@@ -45,6 +41,8 @@ Built using,
 - Kysely
 - MySQL
 
+<!-- Setting up the project -->
+
 ## Running locally
 
 - Manually
@@ -55,5 +53,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Contributing
 
 Unfortunately at the moment, the project is **not** open for contributions.
+
+### Additional
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
