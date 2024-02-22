@@ -45,8 +45,15 @@ Built using,
 
 ## Running locally
 
-- Manually
-- Docker
+The project can be setup deployed using 2 ways one being through Docker (automated) and the other being manually.
+
+#### Docker
+
+#### Manually
+
+- Clone the repo to your machine
+- Change directory into the project folder `cd JobsAhoy`
+- Install the required JS dependencies using your favourite package manager (npm, yarn, pnpm, bun)
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
