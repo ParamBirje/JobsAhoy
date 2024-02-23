@@ -1,40 +1,50 @@
 "use client";
 import { Briefcase, CheckCircle, Heart, User } from "@/lib/Icons";
+import SideMenuButton from "./SideMenuButton";
+import { signOut } from "next-auth/react";
 
-export default function SideMenu({ views, setView }: { views: React.JSX.Element[]; setView: any }) {
+export default function SideMenu({
+  views,
+  setView,
+}: {
+  views: React.JSX.Element[];
+  setView: any;
+}) {
+  function handleSignOut() {
+    signOut({
+      callbackUrl: "/user/logged-out",
+    });
+  }
+
   return (
     <div className="h-full w-[40%] rounded-md bg-opacity-30 bg-primary-lighter flex flex-col items-start">
-      <button
+      <SideMenuButton
         onClick={() => setView(views[0])}
-        className="py-4 px-6 hover:bg-primary-lightest w-full rounded-t-md flex items-center justify-start gap-5"
+        className="rounded-t-md"
       >
         <User size={20} />
         <p className="text-lg tracking-wide">User Information</p>
-      </button>
+      </SideMenuButton>
 
-      <button
-        onClick={() => setView(views[1])}
-        className="py-4 px-6 hover:bg-primary-lightest w-full flex items-center justify-start gap-5"
-      >
+      <SideMenuButton onClick={() => setView(views[1])}>
         <Briefcase size={20} />
         <p className="text-lg tracking-wide">Profiles</p>
-      </button>
+      </SideMenuButton>
 
-      <button
-        onClick={() => setView(views[2])}
-        className="py-4 px-6 hover:bg-primary-lightest w-full flex items-center justify-start gap-5"
-      >
+      <SideMenuButton onClick={() => setView(views[2])}>
         <Heart size={20} />
         <p className="text-lg tracking-wide">Saved Jobs</p>
-      </button>
+      </SideMenuButton>
 
-      <button
-        onClick={() => setView(views[3])}
-        className="py-4 px-6 hover:bg-primary-lightest w-full flex items-center justify-start gap-5"
-      >
+      <SideMenuButton onClick={() => setView(views[3])}>
         <CheckCircle size={20} />
         <p className="text-lg tracking-wide">Applied Jobs</p>
-      </button>
+      </SideMenuButton>
+
+      {/* Log out has no view */}
+      <SideMenuButton onClick={handleSignOut}>
+        <p className="text-lg tracking-wide text-red-400">Log Out</p>
+      </SideMenuButton>
     </div>
   );
 }
