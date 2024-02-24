@@ -123,7 +123,7 @@ export default function GuestJobInfo() {
             <div className="mx-auto w-3/4 h-[2px] my-5" />
 
             {/* Additional buttons */}
-            <div className="my-5">
+            {/* <div className="my-5">
               <div className="flex items-center gap-5 text-lg">
                 <button className="flex items-center tracking-wider justify-between px-4 py-2 w-full bg-transparent border border-secondary rounded-lg hover:bg-secondary hover:text-primary duration-100">
                   <p>Start Interview Prep</p>
@@ -135,14 +135,13 @@ export default function GuestJobInfo() {
                 </button>
               </div>
 
-              {/* ABOUT THE COMPANY */}
-              {/* <div className="mt-5">
+              <div className="mt-5">
                 <h5 className="text-md font-semibold">About Marriott Hotels</h5>
                 <p className="text-secondary-dark">
                   This is a description about an hotel that goes by the name of Marriott.
                 </p>
-              </div> */}
-            </div>
+              </div>
+            </div> */}
           </div>
         </>
       ) : (
