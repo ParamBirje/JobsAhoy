@@ -1,8 +1,10 @@
-import { ArrowRight, Briefcase, CaretDown, Heart, MapPin } from "@/lib/Icons";
-import JobCard from "../JobCard";
 import Link from "next/link";
+import generateDummyJobs from "../utils/SignedOutPageHelpers";
+import GuestJobSection from "../GuestJobSection";
 
 export default function SignedOutPage() {
+  const dummyJobs: JobDetailsType[] = generateDummyJobs();
+
   return (
     <main className="max-w-7xl mx-auto px-5 py-5 h-[80vh]">
       <div className="flex flex-col gap-10 h-full">
@@ -31,7 +33,7 @@ export default function SignedOutPage() {
         </div>
 
         {/* Dummy Job Section */}
-        {/* <JobSection totalJobs={totalJobs} jobsList={jobsData.jobsList} /> */}
+        <GuestJobSection jobsList={dummyJobs} />
       </div>
     </main>
   );
