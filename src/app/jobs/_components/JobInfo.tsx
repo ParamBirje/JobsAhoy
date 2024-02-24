@@ -25,7 +25,10 @@ export default function JobInfo() {
   async function handleSaveButton() {
     try {
       if (!isSaved) {
-        const res = await SaveJobForLater(Number(session?.user.id), Number(job?.id));
+        const res = await SaveJobForLater(
+          Number(session?.user.id),
+          Number(job?.id)
+        );
       } else {
         const res = await DeleteSaveJob(Number(job?.saved_job_id));
       }
@@ -81,7 +84,9 @@ export default function JobInfo() {
               {/* Assigned Tags */}
               <div className="flex items-center gap-2">
                 <div className="text-[11px] bg-primary-lightest hover:brightness-110 px-4 py-1 rounded-full tracking-wider flex items-center gap-3">
-                  <p>{job.job_sponsored ? "Visa Sponsored" : "Visa Available"}</p>
+                  <p>
+                    {job.job_sponsored ? "Visa Sponsored" : "Visa Available"}
+                  </p>
                 </div>
 
                 <div className="text-[11px] bg-primary-lightest hover:brightness-110 px-4 py-1 rounded-full tracking-wider flex items-center gap-3">
@@ -98,8 +103,13 @@ export default function JobInfo() {
 
             <div className="flex flex-col items-end justify-between gap-5 h-full">
               <div className="flex items-center gap-5">
-                <Tooltip text={isSaved ? "Remove From Saved?" : "Save Job For Later?"}>
-                  <button onClick={handleSaveButton} className="hover:text-accentOrange">
+                <Tooltip
+                  text={isSaved ? "Remove From Saved?" : "Save Job For Later?"}
+                >
+                  <button
+                    onClick={handleSaveButton}
+                    className="hover:text-accentOrange"
+                  >
                     <Heart weight={isSaved ? "fill" : "regular"} size={20} />
                   </button>
                 </Tooltip>
@@ -156,7 +166,9 @@ export default function JobInfo() {
           </div>
         </>
       ) : (
-        <div className="text-secondary-dark">Please select a job to view more.</div>
+        <div className="text-secondary-dark">
+          Please select a job to view more.
+        </div>
       )}
     </div>
   );
@@ -164,7 +176,9 @@ export default function JobInfo() {
 
 // FIXME: This function calls on clientside
 async function GetSelectedJobDetails(jobId: string | number) {
-  const result = await fetch(`http://localhost:3000/api/jobs/specific?jobId=${jobId}`);
+  const result = await fetch(
+    `http://localhost:3000/api/jobs/specific?jobId=${jobId}`
+  );
   const body = await result.json();
 
   return body.jobDetails;
@@ -186,9 +200,12 @@ async function SaveJobForLater(userId: number, jobId: number) {
 
 // FIXME: Make this send parameters in body of the request, not in url
 async function DeleteSaveJob(savedJobId: number) {
-  const result = await fetch(`http://localhost:3000/api/user/saved-job?id=${savedJobId}`, {
-    method: "DELETE",
-  });
+  const result = await fetch(
+    `http://localhost:3000/api/user/saved-job?id=${savedJobId}`,
+    {
+      method: "DELETE",
+    }
+  );
   // const body = await result.json();
   return result.status;
 }
