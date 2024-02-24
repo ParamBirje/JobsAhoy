@@ -6,15 +6,15 @@ interface JobListType {
   job_experience_min: number;
   job_experience_max: number;
   job_type: string;
-  created_at: Date;
-  saved_job_id: number | string | null;
+  created_at?: Date;
+  saved_job_id?: number | string | null;
 }
 
 interface JobDetailsType extends JobListType {
   job_desc: string;
   job_link: string;
   job_sponsored: boolean;
-  job_selfapply_link: string | null;
+  job_selfapply_link?: string | null;
 }
 
 interface UserProfileType {
