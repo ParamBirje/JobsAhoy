@@ -9,12 +9,12 @@ export default function SignedOutPage() {
         <div className="flex justify-between items-center gap-4 bg-primary-lighter rounded-md px-6 py-4">
           <div className="flex flex-col gap-3">
             <h2 className="text-2xl font-medium">
-              Get access to all the relevant jobs to your role.
+              Access all the relevant jobs to your role.
             </h2>
-            <p className="w-2/3 text-secondary opacity-90 tracking-wide">
+            <p className="w-2/3 text-secondary opacity-90 tracking-wide text-sm">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Reiciendis molestias molestiae excepturi rerum? Velit error quidem
-              qui minima et distinctio ratione ut? Minus, aperiam tempore.
+              qui minima et distinctio?
             </p>
           </div>
 
