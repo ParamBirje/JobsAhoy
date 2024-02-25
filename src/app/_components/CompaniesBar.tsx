@@ -10,7 +10,7 @@ export default function CompaniesBar() {
   const logoSizeReduction = 40;
 
   return (
-    <section id="companies" className="bg-primary-light px-5 relative">
+    <section id="companies" className="bg-primary-light px-5">
       <div className="flex justify-evenly items-center py-10">
         {images.map((image, idx) => {
           return (
