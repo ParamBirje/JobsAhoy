@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import JobCard from "./JobCard";
 import JobInfo from "./JobInfo";
-import Pagination from "./Pagination";
+import Pagination from "../../Pagination";
 import { atom, useAtom } from "jotai";
 
 export const selectedJobAtom = atom<JobListType | null>(null);

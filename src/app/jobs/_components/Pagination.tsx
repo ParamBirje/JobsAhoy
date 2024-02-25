@@ -1,7 +1,10 @@
 import { useAtom } from "jotai";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { jobItemsPerPageAtom, totalJobsAtom } from "./JobSection";
+import {
+  jobItemsPerPageAtom,
+  totalJobsAtom,
+} from "./views/SignedIn/JobSection";
 
 export default function Pagination() {
   const router = useRouter();
@@ -54,7 +57,9 @@ export default function Pagination() {
       <ul className="w-full flex items-center justify-evenly text-accent-light">
         {pageNums.map((pageNum) => {
           if (pageNum == currentPage)
-            return <PageNumber key={pageNum} isActive={true} pageNumber={pageNum} />;
+            return (
+              <PageNumber key={pageNum} isActive={true} pageNumber={pageNum} />
+            );
           return <PageNumber key={pageNum} pageNumber={pageNum} />;
         })}
       </ul>
@@ -69,7 +74,13 @@ export default function Pagination() {
   );
 }
 
-function PageNumber({ isActive, pageNumber }: { isActive?: boolean; pageNumber: number }) {
+function PageNumber({
+  isActive,
+  pageNumber,
+}: {
+  isActive?: boolean;
+  pageNumber: number;
+}) {
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams.toString());
 
@@ -79,7 +90,11 @@ function PageNumber({ isActive, pageNumber }: { isActive?: boolean; pageNumber: 
 
   return (
     <li className={isActive ? "text-secondary font-medium" : ""}>
-      {isActive ? pageNumber : <Link href={`/jobs?` + newUrlParams}>{pageNumber}</Link>}
+      {isActive ? (
+        pageNumber
+      ) : (
+        <Link href={`/jobs?` + newUrlParams}>{pageNumber}</Link>
+      )}
     </li>
   );
 }

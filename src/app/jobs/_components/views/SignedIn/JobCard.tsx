@@ -4,7 +4,12 @@ import { Heart, MapPin } from "@/lib/Icons";
 import { useAtom } from "jotai";
 import { selectedJobAtom } from "./JobSection";
 
-export default function JobCard({ job }: { job: JobListType; setSelectedJob?: CallableFunction }) {
+export default function JobCard({
+  job,
+}: {
+  job: JobListType;
+  setSelectedJob?: CallableFunction;
+}) {
   const [selectedJob, setSelectedJob] = useAtom(selectedJobAtom);
 
   function handleSelect() {
@@ -22,7 +27,9 @@ export default function JobCard({ job }: { job: JobListType; setSelectedJob?: Ca
         <div className="flex flex-col items-start gap-3">
           <div className="flex flex-col items-start">
             <h4 className="line-clamp-1 text-left">{job.job_title.trim()}</h4>
-            <p className="text-sm text-secondary-dark line-clamp-1">{job.job_company}</p>
+            <p className="text-sm text-secondary-dark line-clamp-1">
+              {job.job_company}
+            </p>
           </div>
 
           <div className="font-medium flex items-center gap-2">

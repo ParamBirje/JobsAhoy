@@ -23,7 +23,10 @@ export default function ApplyChecker({
   const componentRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const handleClickOutside = (event: any) => {
-      if (componentRef.current && !componentRef.current.contains(event.target)) {
+      if (
+        componentRef.current &&
+        !componentRef.current.contains(event.target)
+      ) {
         setShow(false);
       }
     };
@@ -73,8 +76,8 @@ export default function ApplyChecker({
       >
         <h3 className="text-lg font-semibold">Did you apply to this job?</h3>
         <p className="text-secondary-dark">
-          We will add this job to your profile&apos;s applied jobs list, which will help you to
-          track your applications easily.
+          We will add this job to your profile&apos;s applied jobs list, which
+          will help you to track your applications easily.
         </p>
 
         <div className="flex items-center justify-end mt-5">
