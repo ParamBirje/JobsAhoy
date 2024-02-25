@@ -14,7 +14,7 @@ import GlassCard from "@/components/Cards/GlassCard";
 
 export default function Hero() {
   return (
-    <section id="hero" className="max-w-7xl mx-auto px-5 relative">
+    <section id="hero" className="max-w-7xl mx-auto px-5 relative mb-[30em]">
       {/* Actual Main Area */}
       <div className="z-[1] flex flex-col gap-5 w-full relative top-[11em] text-center">
         <div className="flex flex-col gap-3">
@@ -127,7 +127,7 @@ export default function Hero() {
           </div>
         </GlassCard>
       </div>
-      
+
       {/* Interview Prep Card */}
       {/* <div className="z-0 absolute top-[43rem] left-[28rem]">
         <GlassCard css="pr-8 font-medium">
