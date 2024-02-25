@@ -1,8 +1,8 @@
 import Footer from "@/components/Footer";
 import CallToAction from "./_components/CallToAction";
 import Hero from "./_components/Hero";
-import Services from "./_components/Services";
-import Testimonials from "./_components/Testimonials";
+import CompaniesBar from "./_components/CompaniesBar";
+import HowItWorks from "./_components/HowItWorks";
 
 export default function Home() {
   return (
@@ -12,11 +12,14 @@ export default function Home() {
 
         <Hero />
 
-        <Services />
+        <CompaniesBar />
+
+        <HowItWorks />
+
         <CallToAction />
-        <Testimonials />
       </main>
 
+      {/* Footer is here for now, as not planned with other pages yet. */}
       <Footer />
     </>
   );
