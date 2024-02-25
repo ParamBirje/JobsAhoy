@@ -5,9 +5,9 @@ export default function CallToAction() {
         <div className="flex flex-col gap-5 w-1/2">
           <h3 className="text-4xl font-extrabold">Start your journey today.</h3>
           <p className="text-gray-800 tracking-wide">
-            Lorem ipsum dolor sit amet consectetur. Lorem sit et hac sit enim.
-            Praesent feugiat orci dictum lacinia eget sit mi et nam. Nullam
-            nunc. Lorem sit et hac sit enim.
+            Stop the tiresome search juggling around dozens of sites. Join the
+            JobsAhoy community! Discover endless possibilities and make your
+            next career move abroad.
           </p>
         </div>
 
@@ -19,9 +19,9 @@ export default function CallToAction() {
           </button>
 
           <button className="text-secondary tracking-wide text-lg text-right h-full bg-gradient-to-tl from-blue-400 via-accent to-accent rounded-sm rounded-br-2xl rounded-tr-2xl py-8 px-8 font-medium w-1/4 duration-100 hover:brightness-110">
-            Interview
+            Create
             <br />
-            Prep
+            Account
           </button>
         </div>
       </div>
