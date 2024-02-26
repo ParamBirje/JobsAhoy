@@ -1,4 +1,4 @@
-import Footer from "@/components/Footer";
+import Footer from "@/components/Footer/Footer";
 import CallToAction from "./_components/CallToAction";
 import Hero from "./_components/Hero";
 import CompaniesBar from "./_components/CompaniesBar";
