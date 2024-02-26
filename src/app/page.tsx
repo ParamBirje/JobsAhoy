@@ -7,7 +7,7 @@ import HowItWorks from "./_components/HowItWorks";
 export default function Home() {
   return (
     <>
-      <main>
+      <main className="flex flex-col gap-40">
         {/* Sections */}
 
         <Hero />
