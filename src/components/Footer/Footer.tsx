@@ -30,8 +30,8 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-2 text-accent-light">
-            <NavLink href="/user/login">Privacy Policy</NavLink>
-            <NavLink href="/user/create-account">Terms and Conditions</NavLink>
+            <NavLink href="#">Privacy Policy</NavLink>
+            <NavLink href="#">Terms and Conditions</NavLink>
           </div>
         </div>
 
