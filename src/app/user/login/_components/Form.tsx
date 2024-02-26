@@ -1,38 +1,37 @@
 "use client";
-import { signInValidationSchema } from "@/components/FormConfig/AuthSchema";
+import { signInValidationSchema } from "./utils/AuthSchema";
 import { ArrowRight } from "@/lib/Icons";
 import { useFormik } from "formik";
-import { signIn } from 'next-auth/react'
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function SignInForm() {
-
-  const router = useRouter()
+  const router = useRouter();
 
   async function handleSubmit(values: any) {
     const result = await signIn("credentials", {
       email: values.email,
       password: values.password,
       redirect: false,
-    })
+    });
 
-    if (result && !result.error){
-      router.refresh()
-      router.push("/")
+    if (result && !result.error) {
+      router.refresh();
+      router.push("/");
     } else {
-      console.log("error, invalid creds")
-      console.error(result?.error)
+      console.log("error, invalid creds");
+      console.error(result?.error);
     }
   }
-  
+
   const formik = useFormik({
     initialValues: {
       email: "",
-      password: ""
+      password: "",
     },
     validationSchema: signInValidationSchema,
-    onSubmit: handleSubmit
-  })
+    onSubmit: handleSubmit,
+  });
 
   return (
     <form onSubmit={formik.handleSubmit} className="flex flex-col gap-1">

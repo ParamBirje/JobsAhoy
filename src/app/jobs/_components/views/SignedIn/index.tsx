@@ -1,15 +1,15 @@
 import getServerSideSession from "@/lib/auth/ServerSession";
-import JobSection from "../JobSection";
-import ProfileSwitcher from "../ProfileFilter/ProfileSwitcher";
+import JobSection from "./JobSection";
+import ProfileSwitcher from "../../ProfileFilter/ProfileSwitcher";
 import { redirect } from "next/navigation";
-import Filters from "../Filters";
+import Filters from "../../Filters";
 import {
   GetAllJobTypes,
   GetAllLocations,
   GetJobs,
   GetTotalJobsCount,
   GetUserProfiles,
-} from "../utils/SignedInPageHelpers";
+} from "../../utils/SignedInPageHelpers";
 
 export default async function SignedInPage({
   searchParams,

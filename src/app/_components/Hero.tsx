@@ -14,7 +14,7 @@ import GlassCard from "@/components/Cards/GlassCard";
 
 export default function Hero() {
   return (
-    <section id="hero" className="max-w-7xl mx-auto px-5 relative">
+    <section id="hero" className="max-w-7xl mx-auto px-5 relative mb-[23em]">
       {/* Actual Main Area */}
       <div className="z-[1] flex flex-col gap-5 w-full relative top-[11em] text-center">
         <div className="flex flex-col gap-3">
@@ -32,7 +32,7 @@ export default function Hero() {
         </div>
 
         {/* Search Bar */}
-        <div className="mt-10 w-3/4 mx-auto flex items-center rounded-full bg-accentOrange">
+        <div className="mt-10 w-full mx-auto flex items-center rounded-full bg-accentOrange">
           <div className="flex items-center w-full px-5">
             <Briefcase size={26} weight="fill" />
             <input
@@ -65,7 +65,7 @@ export default function Hero() {
       </div>
 
       {/* Germany Card */}
-      <div className="z-0 absolute top-10 right-[6em]">
+      <div className="z-0 absolute top-10 right-[1em]">
         <Image
           src={GermanyCircle}
           height={GermanyCircle.height}
@@ -84,18 +84,18 @@ export default function Hero() {
       </div>
 
       {/* United States Card */}
-      <div className="z-0 absolute top-[20rem] -left-[10em]">
+      <div className="z-0 absolute top-[22rem] -left-[10em]">
         <Image
           src={USCircle}
           height={USCircle.height}
           width={USCircle.width}
           alt={"unitedstates_pic"}
         />
-        <GlassCard css="pr-10 absolute top-[13rem] -right-[4rem] font-medium">
+        <GlassCard css="pr-10 absolute top-[15rem] -right-[4rem] font-medium">
           <div className="flex items-center gap-5">
             <MapPin size={20} weight="fill" />
             <div className="flex flex-col">
-              <p className="text-2xl">United States</p>
+              <p className="text-xl">United States</p>
               <p className="text-[10px] tracking-widest">SOFTWARE ENGINEER</p>
             </div>
           </div>
@@ -103,17 +103,17 @@ export default function Hero() {
       </div>
 
       {/* Dubai Card */}
-      <div className="z-0 absolute top-[33rem] right-0">
+      <div className="z-0 absolute top-[35rem] right-[-5em]">
         <Image
           src={DubaiCircle}
           height={DubaiCircle.height - 80}
           width={DubaiCircle.width - 80}
           alt={"dubai_pic"}
         />
-        <GlassCard css="pr-10 absolute top-[4rem] -left-[12rem] font-medium">
+        <GlassCard css="pr-6 absolute top-[4rem] -left-[12rem] font-medium">
           <div className="flex items-center gap-5">
             <CheckFat className="text-green-400" size={20} weight="fill" />
-            <p className="text-lg">Relocation Assistance</p>
+            <p className="text-md">Relocation Assistance</p>
           </div>
         </GlassCard>
       </div>
@@ -127,7 +127,7 @@ export default function Hero() {
           </div>
         </GlassCard>
       </div>
-      
+
       {/* Interview Prep Card */}
       {/* <div className="z-0 absolute top-[43rem] left-[28rem]">
         <GlassCard css="pr-8 font-medium">

@@ -1,4 +1,4 @@
-import GradientDivider from "../GradientDivider";
+import GradientDivider from "../../components/GradientDivider";
 
 export default function Testimonials() {
   return (

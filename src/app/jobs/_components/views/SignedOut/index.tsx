@@ -1,6 +1,6 @@
 import Link from "next/link";
-import generateDummyJobs from "../utils/SignedOutPageHelpers";
-import GuestJobSection from "../GuestJobSection";
+import generateDummyJobs from "../../utils/SignedOutPageHelpers";
+import GuestJobSection from "./GuestJobSection";
 
 export default function SignedOutPage() {
   const dummyJobs: JobDetailsType[] = generateDummyJobs();

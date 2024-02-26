@@ -1,22 +1,25 @@
-import Footer from "@/components/Footer";
-import CallToAction from "../components/LandingPage/CallToAction";
-import Hero from "../components/LandingPage/Hero";
-import Services from "../components/LandingPage/Services";
-import Testimonials from "../components/LandingPage/Testimonials";
+import Footer from "@/components/Footer/Footer";
+import CallToAction from "./_components/CallToAction";
+import Hero from "./_components/Hero";
+import CompaniesBar from "./_components/CompaniesBar";
+import HowItWorks from "./_components/HowItWorks";
 
 export default function Home() {
   return (
     <>
-      <main>
+      <main className="flex flex-col gap-40">
         {/* Sections */}
 
         <Hero />
 
-        <Services />
+        <CompaniesBar />
+
+        <HowItWorks />
+
         <CallToAction />
-        <Testimonials />
       </main>
 
+      {/* Footer is here for now, as not planned with other pages yet. */}
       <Footer />
     </>
   );

@@ -1,7 +1,7 @@
 import getServerSideSession from "@/lib/auth/ServerSession";
 import { redirect } from "next/navigation";
-import SignedInPage from "./_components/views/SignedInPage";
-import SignedOutPage from "./_components/views/SignedOutPage";
+import SignedInPage from "./_components/views/SignedIn";
+import SignedOutPage from "./_components/views/SignedOut";
 
 export default async function JobsPage({
   searchParams,
