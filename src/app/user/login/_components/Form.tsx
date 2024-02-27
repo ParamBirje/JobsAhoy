@@ -17,7 +17,6 @@ export default function SignInForm() {
     });
 
     if (result && !result.error) {
-      router.refresh();
       router.push("/jobs");
     } else {
       setErrorMsg("Error: Login Failed");
