@@ -11,7 +11,7 @@ export default function SignedOutPage() {
         <div className="flex justify-between items-center gap-4 bg-primary-lighter rounded-md px-6 py-4">
           <div className="flex flex-col gap-3">
             <h2 className="text-2xl font-medium">
-              Access all the relevant jobs to your role.
+              Access all the jobs specific to your role.
             </h2>
             <p className="w-2/3 text-secondary opacity-90 tracking-wide text-sm">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
