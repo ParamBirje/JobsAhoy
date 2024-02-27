@@ -23,7 +23,7 @@ export default async function SignIn() {
         </div>
 
         <div className="flex justify-between items-start gap-[5rem] w-[85%] mx-auto">
-          <div className="h-full w-full self-center">
+          <div className="h-full w-full self-center flex flex-col gap-6">
             <div className="w-full my-1 h-full">
               <div className="duration-100 flex items-center justify-center gap-2 text-seconday border border-green-400 text-green-400 font-medium tracking-wide py-3 px-4 rounded">
                 <p>Testing Area</p>

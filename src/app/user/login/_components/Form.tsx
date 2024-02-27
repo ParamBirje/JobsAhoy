@@ -11,7 +11,6 @@ export default function SignInForm() {
   async function handleSubmit(values: any) {
     const result = await signIn("credentials", {
       email: values.email,
-      password: values.password,
       redirect: false,
     });
 
@@ -27,14 +26,13 @@ export default function SignInForm() {
   const formik = useFormik({
     initialValues: {
       email: "",
-      password: "",
     },
     validationSchema: signInValidationSchema,
     onSubmit: handleSubmit,
   });
 
   return (
-    <form onSubmit={formik.handleSubmit} className="flex flex-col gap-1">
+    <form onSubmit={formik.handleSubmit} className="flex flex-col gap-2">
       <input
         className="outline-none bg-primary-light py-3 px-4 w-full rounded"
         placeholder="Email"
@@ -42,15 +40,6 @@ export default function SignInForm() {
         required
         id="email"
         {...formik.getFieldProps("email")}
-      />
-
-      <input
-        className="outline-none bg-primary-light py-3 px-4 w-full rounded"
-        placeholder="Password"
-        type="password"
-        id="password"
-        required
-        {...formik.getFieldProps("password")}
       />
 
       <button
