@@ -7,24 +7,39 @@ const user = new UserHelper();
 
 export const authOptions: NextAuthOptions = {
   providers: [
+    // CredentialsProvider implemented only for testing environment
     CredentialsProvider({
       name: "credentials",
       credentials: {
-        email: {},
-        password: {},
+        email: {
+          label: "Email",
+          type: "email",
+          placeholder: "johndoe@example.com",
+        },
       },
-      authorize(credentials, req) {
-        if (credentials?.email && credentials.password === "1234") {
-          return {
-            id: 2,
-            name: credentials.email.substring(0, 5),
-            email: credentials.email,
-          };
-        }
+      async authorize(credentials, req) {
+        // Checking if email exists in db
 
-        return null;
+        const userEmail: string = credentials?.email as string;
+        const userData = await user.GetUserID(userEmail);
+
+        if (userData) {
+          // User found
+
+          const userDataToSend = {
+            id: userData.id,
+            name: userData.user_name,
+            email: userData.user_email,
+          };
+
+          return userDataToSend;
+        } else {
+          // User not found
+          return null;
+        }
       },
     }),
+
     GoogleProvider({
       clientSecret: process.env.GOOGLE_SECRET as string,
       clientId: process.env.GOOGLE_CLIENT as string,
@@ -47,7 +62,10 @@ export const authOptions: NextAuthOptions = {
         if (userExist) {
           return true;
         } else {
-          await user.CreateUser(profile.email as string, profile.name as string);
+          await user.CreateUser(
+            profile.email as string,
+            profile.name as string
+          );
           return true;
         }
       }

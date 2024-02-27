@@ -18,7 +18,7 @@ export default function SignInForm() {
 
     if (result && !result.error) {
       router.refresh();
-      router.push("/");
+      router.push("/jobs");
     } else {
       setErrorMsg("Error: Login Failed");
       console.error(result?.error);
