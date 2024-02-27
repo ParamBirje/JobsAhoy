@@ -34,6 +34,8 @@ export default function SignInForm() {
 
   return (
     <form onSubmit={formik.handleSubmit} className="flex flex-col gap-2">
+      <p className="text-red-400 text-sm">{formik.errors.email}</p>
+
       <input
         className="outline-none bg-primary-light py-3 px-4 w-full rounded"
         placeholder="Email"
