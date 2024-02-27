@@ -1,6 +1,5 @@
-import Link from "next/link";
 import SignInForm from "./_components/Form";
-import SocialLoginButtons from "../_components/SocialLoginButtons";
+import SocialLoginButtons from "./_components/SocialLoginButtons";
 import getServerSideSession from "@/lib/auth/ServerSession";
 import { redirect } from "next/navigation";
 
