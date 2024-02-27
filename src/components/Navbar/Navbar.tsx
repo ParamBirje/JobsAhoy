@@ -1,11 +1,12 @@
+"use client";
 import Link from "next/link";
 import ProfileButton from "./ProfileButton";
-import getServerSideSession from "@/lib/auth/ServerSession";
 import { User } from "@/lib/Icons";
 import Links from "./Links";
+import { useSession } from "next-auth/react";
 
-export default async function Navbar() {
-  const session = await getServerSideSession();
+export default function Navbar() {
+  const { data: session } = useSession();
 
   return (
     <nav className="z-[5] sticky top-0 backdrop-blur-md bg-primary bg-opacity-0 border- border-primary-lightest border-opacity-60">
@@ -14,9 +15,7 @@ export default async function Navbar() {
 
         <div className="min-w-[20%]">
           <Link href="/">
-            <h3 className="font-bold text-2xl uppercase">
-              Jobs<span className="">Ahoy</span>
-            </h3>
+            <h3 className="font-bold text-2xl uppercase">JobsAhoy</h3>
           </Link>
         </div>
 

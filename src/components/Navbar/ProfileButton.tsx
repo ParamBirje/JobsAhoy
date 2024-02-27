@@ -1,25 +1,11 @@
 "use client";
 
-import { signOut } from "next-auth/react";
-import React from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function ProfileButton({ user }: { user: any }) {
-  // function handleClick() {
-  //   signOut({
-  //     callbackUrl: "/user/logged-out",
-  //   });
-  // }
-
-  const router = useRouter();
-
-  function handleClick() {
-    router.push("/user/profile");
-  }
-
   return (
-    <button onClick={handleClick} className="font-medium flex items-center gap-3">
+    <Link href="/user/profile" className="font-medium flex items-center gap-3">
       <Image
         className="rounded-full"
         src={user.image || ""}
@@ -28,6 +14,6 @@ export default function ProfileButton({ user }: { user: any }) {
         alt={"profile_pic"}
       />
       <p>{user.name}</p>
-    </button>
+    </Link>
   );
 }
