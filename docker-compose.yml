@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:latest
+    restart: always
+
+    # Container name
+    container_name: jobsahoy_mysql_dummy
+
+    # Default MYSQL image setup
+    environment:
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+
+    # Copies the db-setup.sql to db init folder
+    # The image automatically uses the db-setup.sql to initiate the database
+    volumes:
+      - ./db-setup.sql:/docker-entrypoint-initdb.d/db-setup.sql
+
+    # Can access MYSQL (on port 3306 in container) from native device localhost:3306
+    ports:
+      # native_port:container_port
+      - "3306:3306"
