@@ -28,16 +28,16 @@ All components/functions used _locally_ in a specific route will be under that r
 Let's take an example of a UI component on the login page that lives in the directory path as `src/app/login` used only by `page.tsx` inside.
 
 ```ts
-function MyComponent(){
-    // ...
+function MyComponent() {
+  // ...
 }
 ```
 
 The component should be placed in a separate folder inside `src/app/login/_components` wit it's PropTypes and then be imported into `page.tsx`
 
 ```ts
-export default function MyComponent({}: MyComponentProps){
-    // ...
+export default function MyComponent({}: MyComponentProps) {
+  // ...
 }
 
 type MyComponentProps = {};
@@ -50,16 +50,16 @@ type MyComponentProps = {};
 Let's take an example of a helper function on the login page that lives in the directory path as `src/app/login` used only by `page.tsx` inside.
 
 ```ts
-function MyHelper(){
-    // ...
+function MyHelper() {
+  // ...
 }
 ```
 
 The component should be placed in a separate folder inside `src/app/login/_components/utils` with it's PropTypes and then be imported into `page.tsx`
 
 ```ts
-export default function MyHelper({}: MyHelperParams){
-    // ...
+export default function MyHelper({}: MyHelperParams) {
+  // ...
 }
 
 type MyHelperParams = {};
@@ -77,16 +77,8 @@ Meanwhile other types, will be in `types.ts` under the same directory where it's
 
 ## Static Assets
 
-Let's take an example of an image as our static asset.
-
-The images used in a single file should stay in the same file path unless used by other components. eg. If `example.png` is used by a component in `src/app/about` then the image should be placed inside `src/app/about/_lib/assets`.
-
-- If images are used by other components in the **same directory path** for eg. `src/app/about/MyComponent1.tsx`, `src/app/about/MyComponent2.tsx` and `src/app/about/_components/MyComponent3.tsx` are using the type, we put the image in `src/app/about/_lib/assets`.
-
-- If the image is accessed elsewhere in multiple routes, the assets should go in `src/lib/assets`.
+All images should go inside `src/lib/images` in a structured format and directory.
 
 ## API routes `/api`
 
 Always try to incorporate the backend functions using Nextjs' Server Actions. Only if the function is needed by another app outside of the Next app, then using `/api` route function is advisable.
-
-## WHAT IF thers a component inside `example/child/component` and the main component is in `example/component`
