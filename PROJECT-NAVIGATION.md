@@ -2,7 +2,14 @@
 
 This is a guide for knowing how the project's components are organised and structured. The structure should be followed for future development of the project.
 
-Here are main aspects while building functionality.
+All of the project routes, and local components live inside `src/app`. As of now there are 2 main routes with child routes inside them
+
+- `/user`
+- `/jobs`
+
+Global components and other assets that are used across both of these are stored in `src/components` and `src/lib`.
+
+Here are the other main aspects while building functionality.
 
 - UI components (eg. LoginButton.tsx)
 - Helper functions (eg. getRandom.ts)
@@ -21,7 +28,7 @@ Then other miscellaneous functions that we would use and integrate with the proj
 
 #### General Rule of Thumb
 
-All components/functions used _locally_ in a specific route will be under that route, unless the components are used in another route (not a child of the original route) in which case they become _global_ and reside under `src/components` or `src/lib`
+All components/functions used _locally_ in a specific main route will be under that route, unless the components are used in another main route (not a child of the original route) in which case they become _global_ and reside under `src/components` or `src/lib`.
 
 ## UI Components
 
