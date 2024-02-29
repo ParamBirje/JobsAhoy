@@ -18,7 +18,7 @@ services:
     volumes:
       - ./db-setup.sql:/docker-entrypoint-initdb.d/db-setup.sql
 
-    # Can access MYSQL (on port 3306 in container) from native device localhost:3306
+    # Can access MYSQL (on port 3306 in container) from native device localhost:3307
     ports:
       # native_port:container_port
-      - "3306:3306"
+      - "3307:3306"
