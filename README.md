@@ -45,15 +45,41 @@ Built using,
 
 ## Running locally
 
-The project can be setup deployed using 2 ways one being through Docker (automated) and the other being manually.
+#### Pre-requisites
+
+- Node v18.19 or above
+- Package manager (npm, yarn, pnpm or bun)
+
+The project can be setup deployed using 2 ways one being through Docker (automated) and the other being manually. If you choose to go with the automated way, you will need:
+
+- Docker with Docker Compose v2
+
+Else with the manual method:
+
+- MySQL
+- MySQL workbench (optional, for GUI interface)
+
+Let's start with the steps that are common for both of the deployment methods.
+
+- Clone the repo to your local client
+- Change directory into the project directory `cd JobsAhoy`
+- Inside the project directory, install the required JS dependencies using your favourite package manager
+  - Using npm `npm install`
+  - Using yarn `yarn`
+  - Using pnpm `pnpm install`
+  - Using bun `bun install` _(faster)_
+- Create a `.env` file and copy all the data from `.env.example` into it. For now don't edit anything, we will get back to this later.
+- After the dependencies are installed, you can access the app in your browser on `localhost:3000` by running
+  - Using npm `npm run dev`
+  - Using yarn `yarn dev`
+  - Using pnpm `pnpm run dev`
+  - Using bun `bun run dev` _(faster)_
+
+Great job! The website is up and running, but it would need a database for functioning. Only to setup the MySQL database, we now split into either paths (using Docker or setting it up manually).
 
 #### Docker
 
 #### Manually
-
-- Clone the repo to your machine
-- Change directory into the project folder `cd JobsAhoy`
-- Install the required JS dependencies using your favourite package manager (npm, yarn, pnpm, bun)
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
