@@ -56,7 +56,7 @@ The project can be setup deployed using 2 ways one being through Docker (automat
 
 Else with the manual method:
 
-- MySQL
+- MySQL v8.3 or above
 - MySQL workbench (optional, for GUI interface)
 
 Let's start with the steps that are common for both of the deployment methods.
@@ -69,19 +69,49 @@ Let's start with the steps that are common for both of the deployment methods.
   - Using pnpm `pnpm install`
   - Using bun `bun install` _(faster)_
 - Create a `.env` file and copy all the data from `.env.example` into it. For now don't edit anything, we will get back to this later.
-- After the dependencies are installed, you can access the app in your browser on `localhost:3000` by running
-  - Using npm `npm run dev`
-  - Using yarn `yarn dev`
-  - Using pnpm `pnpm run dev`
-  - Using bun `bun run dev` _(faster)_
 
-Great job! The website is up and running, but it would need a database for functioning. Only to setup the MySQL database, we now split into either paths (using Docker or setting it up manually).
+Great job! Before we get the website up and running, we need a database for functioning. Only to setup the MySQL database, we now split into either paths (using Docker **or** setting it up manually).
 
 #### Docker
 
+Ensure you have Docker and Docker Compose v2 installed.
+
+- Make sure no service, especially local MySQL, is running on port `3306` ([stop them if running](https://phoenixnap.com/kb/start-mysql-server))
+- Open the `.env` file we created earlier, and edit:
+  - `DATABASE_PASSWORD`, Set any password that you want, Docker will use this value when initialising the database.
+- Inside the project folder, run this command to start the container
+
+```
+docker compose --env-file .env up --build
+```
+
+- Make sure you get his message at the end >> `jobsahoy_mysql_dummy  | 2024-03-01T12:59:16.781825Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.3.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL` which confirms the database is ready to receive connections.
+
 #### Manually
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ensure you have MySQL 8.3^ installed. You can optionally use MySQL Workbench for an easier UI based configuration and setup procedure or use the old-school CLI way.
+
+- [Create a new database schema](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-to-create-a-database-schema-with-the-MySQL-Workbench) named `jobsahoy_sample`
+- Open the `.env` file we created earlier, and edit:
+  - `DATABASE_USER`, edit this and set it to your MySQL user name if it is other than `root`
+  - `DATABASE_PASSWORD`, set MySQL user password that you had used to initially setup
+- Having the `jobsahoy_sample` database schema selected, [run the all queries](https://world.siteground.com/tutorials/php-mysql/mysql-workbench/#:~:text=To%20do%20that%2C%20first%20select,field%20to%20run%20the%20query.) that are in `db-setup.sql` to initialise the database with dummy data and table schema.
+
+#### Setting up the website
+
+- After the project dependencies are installed, we create a build of our app. (_with npm as example_)
+
+```
+npm run build
+```
+
+- We now run the build version using the following command.
+
+```
+npm run start
+```
+
+You can now access the app in your browser on [http://localhost:3000](http://localhost:3000/) !
 
 ## Contributing
 
