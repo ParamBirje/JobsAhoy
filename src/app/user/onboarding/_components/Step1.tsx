@@ -13,30 +13,36 @@ export default function Step1({ next, formData }: { next: any; formData: {} }) {
   let jobOptions: JobProfileOptionType[] = [];
 
   function loadOptions(inputValue: string, callback: any) {
-    fetch(`http://localhost:3000/api/jobs/profiles?search=${inputValue}`).then(async (response) => {
-      const result = await response.json();
+    fetch(`http://localhost:3000/api/jobs/profiles?search=${inputValue}`).then(
+      async (response) => {
+        const result = await response.json();
 
-      jobOptions = [];
-      result.profiles.forEach((prof: any) => {
-        jobOptions.push({
-          label: prof.profile_name as string,
-          value: prof.id as number,
+        jobOptions = [];
+        result.profiles.forEach((prof: any) => {
+          jobOptions.push({
+            label: prof.profile_name as string,
+            value: prof.id as number,
+          });
         });
-      });
 
-      callback(jobOptions);
-    });
+        callback(jobOptions);
+      }
+    );
   }
 
   return (
-    <Formik initialValues={formData} onSubmit={next} validationSchema={validationSchema}>
+    <Formik
+      initialValues={formData}
+      onSubmit={next}
+      validationSchema={validationSchema}
+    >
       {(props) => (
         <Form
           onSubmit={props.handleSubmit}
           className="w-full h-full flex flex-col items-start gap-4"
         >
           <h5 className="tracking-wide text-left">
-            A very long question about the user job profile?
+            What job role do you currently work as?
           </h5>
 
           <AsyncSelect
@@ -51,7 +57,9 @@ export default function Step1({ next, formData }: { next: any; formData: {} }) {
                 return `text-secondary rounded-md`;
               },
               option: (state) => {
-                return state.isFocused ? `!bg-primary-lightest` : `!bg-primary-lighter`;
+                return state.isFocused
+                  ? `!bg-primary-lightest`
+                  : `!bg-primary-lighter`;
               },
               menu: (state) => {
                 return `!bg-primary-lighter`;
