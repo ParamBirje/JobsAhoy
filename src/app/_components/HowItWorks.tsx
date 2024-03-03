@@ -23,10 +23,10 @@ export default function HowItWorks() {
             <div className="w-1/2 flex flex-col gap-5">
               <h3 className="text-3xl font-medium">Setup your free account</h3>
               <p className="tracking-wide text-secondary-dark">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Eligendi unde quia exercitationem quisquam quidem temporibus
-                soluta nobis, expedita nesciunt, amet quas aspernatur ab
-                corporis adipisci.
+                Creating your account with us will help us personalise your
+                dashboard and curate role specific jobs for you. Just provide
+                details like job role, years of experience, your short skill
+                summary and we are good to go!
               </p>
             </div>
           </div>
@@ -46,10 +46,9 @@ export default function HowItWorks() {
                 Personalised specific jobs
               </h3>
               <p className="tracking-wide text-secondary-dark">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Eligendi unde quia exercitationem quisquam quidem temporibus
-                soluta nobis, expedita nesciunt, amet quas aspernatur ab
-                corporis adipisci.
+                Your JobsAhoy dashboard will keep profile specific jobs for you
+                ready to apply. These jobs are offered by companies that provide
+                visa sponsorship / assistance throughout your journey.
               </p>
             </div>
           </div>
@@ -69,10 +68,9 @@ export default function HowItWorks() {
                 Apply efficiently with skill matching
               </h3>
               <p className="tracking-wide text-secondary-dark">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Eligendi unde quia exercitationem quisquam quidem temporibus
-                soluta nobis, expedita nesciunt, amet quas aspernatur ab
-                corporis adipisci.
+                No more wasting time on skimming through dozens of job
+                descriptions for weeks, now that the Profile Skills Match score
+                is here!
               </p>
             </div>
           </div>

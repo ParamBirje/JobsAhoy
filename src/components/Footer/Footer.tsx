@@ -7,15 +7,15 @@ export default function Footer() {
     <footer className="bg-primary-dark py-14">
       <div className="max-w-7xl mx-auto px-5 flex flex-col gap-20">
         <div className="flex justify-between gap-5">
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-5 w-1/4">
             <Link href="/">
               <h3 className="font-bold text-2xl uppercase">
                 Jobs<span className="">Ahoy</span>
               </h3>
             </Link>
-            <p className="text-sm text-secondary-dark w-2/3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum,
-              eum.
+            <p className="text-sm text-secondary-dark">
+              Making the lives of millions of job seekers easier by centralising
+              visa sponsored jobs specific to their profile.
             </p>
           </div>
 

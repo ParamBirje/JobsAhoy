@@ -43,7 +43,6 @@ export default function Services() {
             <h4 className="text-xl font-semibold">Visa & Relocation</h4>
             <p className="text-secondary-dark w-[50%]">
               Relocation Assistance with visa processing guidance and policies.
-              Lorem ipsum
             </p>
             <button className="bg-accent rounded-full px-6 py-2 font-medium hover:bg-accent-light duration-100 mt-5">
               Learn More

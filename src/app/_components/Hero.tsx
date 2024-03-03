@@ -26,8 +26,8 @@ export default function Hero() {
             </span>
           </h1>
           <p className="tracking-wide text-sm text-secondary-dark w-[35%] mx-auto">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-            eveniet voluptates assumendas.
+            Centralize your job-seeking journey with handpicked role specific
+            visa sponsored jobs abroad!
           </p>
         </div>
 

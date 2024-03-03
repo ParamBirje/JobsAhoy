@@ -14,9 +14,8 @@ export default function SignedOutPage() {
               Access all the jobs specific to your role.
             </h2>
             <p className="w-2/3 text-secondary opacity-90 tracking-wide text-sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reiciendis molestias molestiae excepturi rerum? Velit error quidem
-              qui minima et distinctio?
+              Create an account with us now to get a fully personalised
+              dashboard with jobs specific to your role, experience and skills!
             </p>
           </div>
 
