@@ -20,9 +20,9 @@
 
 ## About the Project
 
-<img width="100%" alt="booking-screen" src="https://github.com/calcom/cal.com/assets/8019099/407e727e-ff19-4ca4-bcae-049dca05cf02">
+<img width="80%" alt="booking-screen" src="https://github.com/ParamBirje/JobsAhoy/assets/87022870/b4359089-9201-4d76-ab95-bae3d83fe2b9">
 
-# Relocating for a job across the globe, made simple.
+# Finding visa sponsored jobs made easier.
 
 Want to relocate to your favourite countries? Feeling exhausted searching for visa sponsored jobs? Have tried every job board out there?
 
