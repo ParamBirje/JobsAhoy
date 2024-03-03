@@ -20,7 +20,7 @@
 
 ## About the Project
 
-<img width="80%" alt="booking-screen" src="https://github.com/ParamBirje/JobsAhoy/assets/87022870/b4359089-9201-4d76-ab95-bae3d83fe2b9">
+<img width="100%" alt="sign-up-screen" src="https://github.com/ParamBirje/JobsAhoy/assets/87022870/b4359089-9201-4d76-ab95-bae3d83fe2b9">
 
 # Finding visa sponsored jobs made easier.
 
