@@ -59,14 +59,18 @@ The project uses a MySQL database that can be deployed using 2 ways. You have to
 Let's start with the steps for setting up the project that are common for both of the deployment methods.
 
 - Clone the repo to your local system
+
 ```
 git clone https://github.com/ParamBirje/JobsAhoy.git
 ```
+
 - Change directory into the project directory `cd JobsAhoy`
 - Inside the project directory, install the required JS dependencies by running the following command
+
 ```
 npm install
 ```
+
 - Locate the `.env.example` in the project's root directory and make a copy of it as a `.env` file. For now don't edit anything, we will get back to this later.
 
 Great job! Before we get the website up and running, we need a database for functioning. Only to setup the MySQL database, we now split into either paths (using Docker **or** setting it up manually).
@@ -125,6 +129,7 @@ The project, in production, will be using only social sign-ins (SSO) and hence d
 ### Test Users
 
 If you followed all the instructions of the local setup guide, you can test on the login page using these credentials (passwordless).
+
 - `john@example.com`
 - `jane@example.com`
 - `michael@example.com`
@@ -134,6 +139,7 @@ _The `db-setup.sql` script helps us in setting up these users._
 ### Google OAuth
 
 If you possess the Google OAuth provider API keys from the Google Cloud Platform ([get them here](https://support.google.com/cloud/answer/6158849?hl=en)):
+
 - Edit the `.env` file and
   - Set `GOOGLE_CLIENT` and the `GOOGLE_SECRET` to the corresponding values provided by Google.
 
@@ -142,6 +148,10 @@ And you're all set to test the Google Authentication. Just rebuild the Next.js a
 ## Contributing
 
 Unfortunately at the moment, the project is **not** open for contributions.
+
+## Project Roadmap
+
+The features that are completed or in-progress are tracked [here](https://github.com/ParamBirje/JobsAhoy/blob/main/ROADMAP.md).
 
 ## Additional
 
