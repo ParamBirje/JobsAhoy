@@ -11,6 +11,7 @@ import GermanyCircle from "@/lib/images/hero/germany.png";
 import USCircle from "@/lib/images/hero/unitedstates.png";
 import DubaiCircle from "@/lib/images/hero/dubai.png";
 import GlassCard from "@/components/Cards/GlassCard";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -51,16 +52,16 @@ export default function Hero() {
             />
             <CaretDown className="cursor-pointer" size={26} weight="fill" />
           </div>
-          <button
+          <Link
             className="m-1 pl-6 flex group items-center gap-3 text-black bg-secondary font-bold rounded-full px-5 py-3"
-            type="submit"
+            href="/jobs"
           >
             <p>Search</p>
             <ArrowRight
               className="duration-100 group-hover:translate-x-1"
               size={20}
             />
-          </button>
+          </Link>
         </div>
       </div>
 
