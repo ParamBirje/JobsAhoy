@@ -33,7 +33,10 @@ export default function ProfileSwitcher({
   const componentRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const handleClickOutside = (event: any) => {
-      if (componentRef.current && !componentRef.current.contains(event.target)) {
+      if (
+        componentRef.current &&
+        !componentRef.current.contains(event.target)
+      ) {
         setShowOptions(false);
       }
     };
@@ -67,8 +70,8 @@ export default function ProfileSwitcher({
   // Clear button handler
   function handleClearFilter() {
     setFilterList((prevFilterList) =>
-      prevFilterList.map((fruit) => ({
-        ...fruit,
+      prevFilterList.map((option) => ({
+        ...option,
         checked: false,
       }))
     );
@@ -83,12 +86,15 @@ export default function ProfileSwitcher({
     );
 
     // If all filters are unchecked and applied, the selectedProfile is default filter.
-    if (checkedProfiles.length == 0) checkedProfiles.push({ ...selectedProfile, checked: true });
+    if (checkedProfiles.length == 0)
+      checkedProfiles.push({ ...selectedProfile, checked: true });
 
     const params = new URLSearchParams(searchParams.toString());
     params.delete("profile");
 
-    checkedProfiles.forEach((profile) => params.append("profile", profile.id.toString()));
+    checkedProfiles.forEach((profile) =>
+      params.append("profile", profile.id.toString())
+    );
     // HACK: Uncomment this if you want to make selectedProfile default
     // params.append("profile", selectedProfile.id.toString());
     router.push("/jobs?" + params.toString());
@@ -113,8 +119,12 @@ export default function ProfileSwitcher({
           />
 
           <div className="flex leading-[1.1] flex-col items-start justify-end">
-            <p className="capitalize text-[11px] tracking-wide">Hello, {session?.user?.name}</p>
-            <p className="text-lg tracking-wide font-light capitalize">Browse Profiles</p>
+            <p className="capitalize text-[11px] tracking-wide">
+              Hello, {session?.user?.name}
+            </p>
+            <p className="text-lg tracking-wide font-light capitalize">
+              Browse Profiles
+            </p>
           </div>
         </div>
 

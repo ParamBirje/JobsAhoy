@@ -30,7 +30,9 @@ export default function VisaFilter() {
   const [filterList, setFilterList] = useState(
     optionsList.map((option) => ({
       ...option,
-      checked: currentlyFilteredIDs.includes(option.is_visa_sponsored.toString()),
+      checked: currentlyFilteredIDs.includes(
+        option.is_visa_sponsored.toString()
+      ),
     }))
   );
 
@@ -46,7 +48,10 @@ export default function VisaFilter() {
   const componentRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const handleClickOutside = (event: any) => {
-      if (componentRef.current && !componentRef.current.contains(event.target)) {
+      if (
+        componentRef.current &&
+        !componentRef.current.contains(event.target)
+      ) {
         setShowOptions(false);
       }
     };
@@ -63,8 +68,8 @@ export default function VisaFilter() {
   // Clear button handler
   function handleClearFilter() {
     setFilterList((prevFilterList) =>
-      prevFilterList.map((fruit) => ({
-        ...fruit,
+      prevFilterList.map((option) => ({
+        ...option,
         checked: false,
       }))
     );

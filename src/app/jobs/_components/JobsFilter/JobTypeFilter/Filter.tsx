@@ -4,7 +4,11 @@ import React, { useEffect, useRef, useState } from "react";
 import Option from "./Option";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function JobTypeFilter({ optionsList }: { optionsList: JobTypeType[] }) {
+export default function JobTypeFilter({
+  optionsList,
+}: {
+  optionsList: JobTypeType[];
+}) {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -34,7 +38,10 @@ export default function JobTypeFilter({ optionsList }: { optionsList: JobTypeTyp
   const componentRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const handleClickOutside = (event: any) => {
-      if (componentRef.current && !componentRef.current.contains(event.target)) {
+      if (
+        componentRef.current &&
+        !componentRef.current.contains(event.target)
+      ) {
         setShowOptions(false);
       }
     };
@@ -51,8 +58,8 @@ export default function JobTypeFilter({ optionsList }: { optionsList: JobTypeTyp
   // Clear button handler
   function handleClearFilter() {
     setFilterList((prevFilterList) =>
-      prevFilterList.map((fruit) => ({
-        ...fruit,
+      prevFilterList.map((option) => ({
+        ...option,
         checked: false,
       }))
     );
@@ -67,7 +74,9 @@ export default function JobTypeFilter({ optionsList }: { optionsList: JobTypeTyp
     params.delete("type");
     params.delete("page");
 
-    checkedOptions.forEach((location) => params.append("type", location.id.toString()));
+    checkedOptions.forEach((location) =>
+      params.append("type", location.id.toString())
+    );
     router.push("/jobs?" + params.toString());
 
     handleShowOptions();
@@ -103,7 +112,9 @@ export default function JobTypeFilter({ optionsList }: { optionsList: JobTypeTyp
             })}
 
             {optionsList.length == 0 && (
-              <div className="text-secondary-dark text-sm text-center">No options.</div>
+              <div className="text-secondary-dark text-sm text-center">
+                No options.
+              </div>
             )}
           </ul>
 

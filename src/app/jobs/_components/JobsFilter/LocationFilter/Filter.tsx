@@ -4,7 +4,11 @@ import React, { useEffect, useRef, useState } from "react";
 import Option from "./Option";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function LocationFilter({ optionsList }: { optionsList: LocationType[] }) {
+export default function LocationFilter({
+  optionsList,
+}: {
+  optionsList: LocationType[];
+}) {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -34,7 +38,10 @@ export default function LocationFilter({ optionsList }: { optionsList: LocationT
   const componentRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const handleClickOutside = (event: any) => {
-      if (componentRef.current && !componentRef.current.contains(event.target)) {
+      if (
+        componentRef.current &&
+        !componentRef.current.contains(event.target)
+      ) {
         setShowOptions(false);
       }
     };
@@ -51,8 +58,8 @@ export default function LocationFilter({ optionsList }: { optionsList: LocationT
   // Clear button handler
   function handleClearFilter() {
     setFilterList((prevFilterList) =>
-      prevFilterList.map((fruit) => ({
-        ...fruit,
+      prevFilterList.map((option) => ({
+        ...option,
         checked: false,
       }))
     );
@@ -67,7 +74,9 @@ export default function LocationFilter({ optionsList }: { optionsList: LocationT
     params.delete("location");
     params.delete("page");
 
-    checkedOptions.forEach((location) => params.append("location", location.id.toString()));
+    checkedOptions.forEach((location) =>
+      params.append("location", location.id.toString())
+    );
     router.push("/jobs?" + params.toString());
     handleShowOptions();
   }
@@ -102,7 +111,9 @@ export default function LocationFilter({ optionsList }: { optionsList: LocationT
             })}
 
             {optionsList.length == 0 && (
-              <div className="text-secondary-dark text-sm text-center">No options.</div>
+              <div className="text-secondary-dark text-sm text-center">
+                No options.
+              </div>
             )}
           </ul>
 
