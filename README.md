@@ -119,11 +119,11 @@ npm run start
 
 To test the website with authentication, continue reading below.
 
-### Testing
+## Testing
 
 The project, in production, will be using only social sign-ins (SSO) and hence does not have the traditional sign-in / sign-up page implemented. The social authentication providers require an API key for them to function. Although it is practically not possible for everyone to possess these keys, for testing purposes, there is an email sign-in feature developed for testing user behaviors. Let's look at how we could test the authentication.
 
-## Test Email Users
+### Test Email Users
 
 If you followed all the instructions of the local setup guide, you can test on the login page using these credentials (passwordless).
 - `john@example.com`
@@ -132,7 +132,7 @@ If you followed all the instructions of the local setup guide, you can test on t
 
 _The `db-setup` script helps us in setting up these users._
 
-## Google OAuth
+### Google OAuth
 
 If you possess the Google OAuth provider API keys from the Google Cloud Platform ([get them here](https://support.google.com/cloud/answer/6158849?hl=en)):
 - Edit the `.env` file and
@@ -144,7 +144,7 @@ And you're all set to test the Google Authentication. Just rebuild the Next.js a
 
 Unfortunately at the moment, the project is **not** open for contributions.
 
-### Additional
+## Additional
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
