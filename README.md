@@ -54,7 +54,7 @@ The project uses a MySQL database that can be deployed using 2 ways. You have to
 - Docker
 - Manual
 
-### Next.js App Setup
+### App Setup
 
 Let's start with the steps for setting up the project that are common for both of the deployment methods.
 
@@ -67,39 +67,38 @@ git clone https://github.com/ParamBirje/JobsAhoy.git
 ```
 npm install
 ```
-- Create `.env` file in the project's root directory.
-- Locate the `.env.example` in the project's root directory and copy all the data from it into the newly created `.env` file. For now don't edit anything, we will get back to this later.
+- Locate the `.env.example` in the project's root directory and make a copy of it as a `.env` file. For now don't edit anything, we will get back to this later.
 
 Great job! Before we get the website up and running, we need a database for functioning. Only to setup the MySQL database, we now split into either paths (using Docker **or** setting it up manually).
 
 ### Docker
 
-Ensure you have [Docker Engine and Docker Compose v2](https://docs.docker.com/compose/install/) installed.
+Ensure you have [Docker Engine and Docker Compose v2](https://docs.docker.com/compose/install/) installed and the engine is running.
 
 - Make sure no service, especially local MySQL, is running on port `3306` ([stop the service if running](https://phoenixnap.com/kb/start-mysql-server#ftoc-heading-5:~:text=Start%20Server%20button%2C-,Stop%20MySQL%20Server,-The%20ability%20to))
 - Open the `.env` file we created earlier, and edit:
   - `DATABASE_PASSWORD`, Set any password that you want, Docker will use this value when initialising the database.
-- Inside the project folder, run this command to start the container. (Ensure Docker engine is running if you encounter errors on using this command)
+- Inside the project directory, run this command to start the container.
 
 ```
 docker compose --env-file .env up --build
 ```
 
-- Make sure you get this message at the end >> `[Server] /usr/sbin/mysqld: ready for connections. Version: '8.3.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL` which confirms the database is ready to receive connections.
+- Wait for this message at the end >> `[Server] /usr/sbin/mysqld: ready for connections. Version: '8.3.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL` which confirms the database is ready to receive connections.
 
 ### Manual Database Setup (skip if done by Docker)
 
-Ensure you have MySQL 8.3^ installed.
+Ensure you have [MySQL 8.0.3^](https://dev.mysql.com/downloads/) installed.
 
-You can optionally use MySQL Workbench for an easier UI based configuration and setup procedure or use the old-school CLI way.
+You can optionally use [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) for an easier UI based configuration and setup procedure or use the old-school CLI way.
 
 - [Create a new database schema](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-to-create-a-database-schema-with-the-MySQL-Workbench) named `jobsahoy_sample`
 - Open the `.env` file we created earlier, and edit:
   - `DATABASE_USER`, edit this and set it to your MySQL user name that you used during initial database setup (default user is `root`)
   - `DATABASE_PASSWORD`, set MySQL user password that you had used to initially setup the user.
-- Having the `jobsahoy_sample` database schema selected, [run the all queries](https://world.siteground.com/tutorials/php-mysql/mysql-workbench/#:~:text=To%20do%20that%2C%20first%20select,field%20to%20run%20the%20query.) that are in `db-setup.sql` to initialise the database with dummy data and table schema.
+- Having the `jobsahoy_sample` database schema selected, [run all the queries](https://world.siteground.com/tutorials/php-mysql/mysql-workbench/#:~:text=To%20do%20that%2C%20first%20select,field%20to%20run%20the%20query.) that are in `db-setup.sql` to initialise the database with dummy data and table schema.
 
-### Continuing Next.js App Setup
+### Continuing App Setup
 
 Open a new terminal session and change working directory to the project's root directory i.e `cd JobsAhoy`
 
@@ -123,14 +122,14 @@ To test the website with authentication, continue reading below.
 
 The project, in production, will be using only social sign-ins (SSO) and hence does not have the traditional sign-in / sign-up page implemented. The social authentication providers require an API key for them to function. Although it is practically not possible for everyone to possess these keys, for testing purposes, there is an email sign-in feature developed for testing user behaviors. Let's look at how we could test the authentication.
 
-### Test Email Users
+### Test Users
 
 If you followed all the instructions of the local setup guide, you can test on the login page using these credentials (passwordless).
 - `john@example.com`
 - `jane@example.com`
 - `michael@example.com`
 
-_The `db-setup` script helps us in setting up these users._
+_The `db-setup.sql` script helps us in setting up these users._
 
 ### Google OAuth
 
