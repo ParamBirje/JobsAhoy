@@ -4,6 +4,11 @@
 
 - Authentication
 - Job listings specific to user role
+- Filters
+  - Location
+  - Visa Type
+  - Experience
+  - Job Type
 - Bookmark/Save jobs for later (with tracking in My Account)
 - Apply to jobs (with tracking in My Account)
 
