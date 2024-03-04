@@ -145,14 +145,19 @@ export default function JobInfo() {
             {/* Additional buttons */}
             <div className="my-5">
               <div className="flex items-center gap-5 text-lg">
-                <button className="flex items-center tracking-wider justify-between px-4 py-2 w-full bg-transparent border border-secondary rounded-lg hover:bg-secondary hover:text-primary duration-100">
-                  <p>Start Interview Prep</p>
-                  <ArrowRight size={20} />
-                </button>
-                <button className="flex items-center tracking-wider justify-between px-4 py-2 w-full bg-transparent border border-secondary rounded-lg hover:bg-secondary hover:text-primary duration-100">
-                  <p>Create Resume/Cover Letter</p>
-                  <ArrowRight size={20} />
-                </button>
+                <Tooltip text="Coming Soon">
+                  <button className="flex items-center tracking-wider justify-between px-4 py-2 w-full bg-transparent border border-secondary rounded-lg hover:bg-secondary hover:text-primary duration-100">
+                    <p>Start Interview Prep</p>
+                    <ArrowRight size={20} />
+                  </button>
+                </Tooltip>
+
+                <Tooltip text="Coming Soon">
+                  <button className="flex items-center tracking-wider justify-between px-4 py-2 w-full bg-transparent border border-secondary rounded-lg hover:bg-secondary hover:text-primary duration-100">
+                    <p>Create Resume/Cover Letter</p>
+                    <ArrowRight size={20} />
+                  </button>
+                </Tooltip>
               </div>
 
               {/* ABOUT THE COMPANY */}
