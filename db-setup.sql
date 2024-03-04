@@ -190,24 +190,24 @@ INSERT INTO `location` (`id`, `location_name`, `location_desc`, `location_countr
 
 INSERT INTO `visa_job` (`job_location`, `job_desc`, `created_at`, `id`, `job_title`, `job_experience_min`, `job_experience_max`, `job_sponsored`, `job_selfapply_link`, `job_link`, `active`, `post_date`, `expiry_date`, `job_type`, `approved_by`, `job_company`, `selected_profile`) VALUES
 ('["Sao Paulo"]', 'We are seeking a skilled Software Developer to join our dynamic team.', NOW(), 1, 'Software Developer', 2, 5, 1, NULL, 'https://example.com/job1', 1, NULL, NULL, 1, 1, 1, 1),
-('["San Francisco"]', 'Exciting opportunity for a Data Analyst to work on cutting-edge projects.', NOW(), 2, 'Data Analyst', 3, 6, 1, NULL, 'https://example.com/job2', 1, NULL, NULL, 2, 1, 2, 2),
-('["London"]', 'We are hiring a Network Engineer to manage our global network infrastructure.', NOW(), 3, 'Network Engineer', 4, 8, 1, NULL, 'https://example.com/job3', 1, NULL, NULL, 3, 1, 3, 3),
+('["San Francisco"]', 'Exciting opportunity for a Data Analyst to work on cutting-edge projects.', NOW(), 2, 'Data Analyst', 3, 6, 0, NULL, 'https://example.com/job2', 1, NULL, NULL, 2, 1, 2, 2),
+('["London"]', 'We are hiring a Network Engineer to manage our global network infrastructure.', NOW(), 3, 'Network Engineer', 4, 8, 0, NULL, 'https://example.com/job3', 1, NULL, NULL, 3, 1, 3, 3),
 ('["Tokyo"]', 'Join our team as a System Administrator and ensure smooth operations.', NOW(), 4, 'System Administrator', 3, 7, 1, NULL, 'https://example.com/job4', 1, NULL, NULL, 3, 1, 4, 4),
 ('["Berlin"]', 'Seeking a talented UI/UX Designer to create engaging user experiences.', NOW(), 5, 'UI/UX Designer', 2, 6, 1, NULL, 'https://example.com/job5', 1, NULL, NULL, 2, 1, 5, 5),
 ('["Tokyo"]', 'We have an opening for a Cybersecurity Specialist to enhance our security measures.', NOW(), 6, 'Cybersecurity Specialist', 5, 10, 1, NULL, 'https://example.com/job6', 1, NULL, NULL, 1, 1, 6, 6),
 ('["San Francisco"]', 'Exciting opportunity for a Software Developer to work on innovative projects.', NOW(), 7, 'Software Developer', 3, 8, 1, NULL, 'https://example.com/job7', 1, NULL, NULL, 1, 1, 7, 1),
 ('["Austin"]', 'Join us as a Data Analyst and analyze large datasets to extract insights.', NOW(), 8, 'Data Analyst', 2, 5, 1, NULL, 'https://example.com/job8', 1, NULL, NULL, 2, 1, 8, 2),
-('["Sydney"]', 'Seeking a skilled Network Engineer to design and implement network solutions.', NOW(), 9, 'Network Engineer', 4, 8, 1, NULL, 'https://example.com/job9', 1, NULL, NULL, 3, 1, 9, 3),
+('["Sydney"]', 'Seeking a skilled Network Engineer to design and implement network solutions.', NOW(), 9, 'Network Engineer', 4, 8, 0, NULL, 'https://example.com/job9', 1, NULL, NULL, 3, 1, 9, 3),
 ('["New York"]', 'We are hiring a System Administrator to manage our IT infrastructure.', NOW(), 10, 'System Administrator', 3, 7, 1, NULL, 'https://example.com/job10', 1, NULL, NULL, 3, 1, 10, 4),
 ('["New York"]', 'Join our team as a UI/UX Designer and create intuitive user interfaces.', NOW(), 11, 'UI/UX Designer', 2, 6, 1, NULL, 'https://example.com/job11', 1, NULL, NULL, 2, 1, 1, 5), 
 ('["Sao Paulo"]', 'Exciting opportunity for a Cybersecurity Specialist to strengthen our security posture.', NOW(), 12, 'Cybersecurity Specialist', 5, 10, 1, NULL, 'https://example.com/job12', 1, NULL, NULL, 1, 1, 2, 6),
 ('["Austin"]', 'We have an opening for a Software Developer to join our innovative team.', NOW(), 13, 'Software Developer', 3, 8, 1, NULL, 'https://example.com/job13', 1, NULL, NULL, 1, 1, 3, 1),
 ('["Stockholm"]', 'Seeking a talented Data Analyst to derive meaningful insights from data.', NOW(), 14, 'Data Analyst', 2, 5, 1, NULL, 'https://example.com/job14', 1, NULL, NULL, 2, 1, 4, 2),
 ('["Berlin"]', 'Join us as a Network Engineer and help optimize our network infrastructure.', NOW(), 15, 'Network Engineer', 4, 8, 1, NULL, 'https://example.com/job15', 1, NULL, NULL, 3, 1, 5, 3),
-('["Singapore"]', 'Exciting opportunity for a System Administrator to manage our IT systems.', NOW(), 16, 'System Administrator', 3, 7, 1, NULL, 'https://example.com/job16', 1, NULL, NULL, 3, 1, 6, 4),
+('["Singapore"]', 'Exciting opportunity for a System Administrator to manage our IT systems.', NOW(), 16, 'System Administrator', 3, 7, 0, NULL, 'https://example.com/job16', 1, NULL, NULL, 3, 1, 6, 4),
 ('["London"]', 'Join our team as a UI/UX Designer and craft beautiful user experiences.', NOW(), 17, 'UI/UX Designer', 2, 6, 1, NULL, 'https://example.com/job17', 1, NULL, NULL, 2, 1, 7, 5),
 ('["Tokyo"]', 'We have an opening for a Cybersecurity Specialist to enhance our cybersecurity.', NOW(), 18, 'Cybersecurity Specialist', 5, 10, 1, NULL, 'https://example.com/job18', 1, NULL, NULL, 1, 1, 8, 6),
-('["San Francisco"]', 'Exciting opportunity for a Software Developer to work on challenging projects.', NOW(), 19, 'Software Developer', 3, 8, 1, NULL, 'https://example.com/job19', 1, NULL, NULL, 1, 1, 7, 1),
+('["San Francisco"]', 'Exciting opportunity for a Software Developer to work on challenging projects.', NOW(), 19, 'Software Developer', 3, 8, 0, NULL, 'https://example.com/job19', 1, NULL, NULL, 1, 1, 7, 1),
 ('["Toronto"]', 'Join us as a Data Analyst and uncover insights from our diverse datasets.', NOW(), 20, 'Data Analyst', 2, 5, 1, NULL, 'https://example.com/job20', 1, NULL, NULL, 2, 1, 10, 2);
 
 INSERT INTO `location_connector` (`location_id`, `visa_job_id`)
