@@ -21,7 +21,7 @@ export default function Footer() {
 
           <div className="flex flex-col gap-2">
             <NavLink href="/jobs">Visa Sponsored Jobs</NavLink>
-            <NavLink href="/jobs">Blog</NavLink>
+            <NavLink href="/blog">Blog</NavLink>
           </div>
 
           <div className="flex flex-col gap-2">
