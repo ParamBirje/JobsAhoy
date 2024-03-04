@@ -78,7 +78,7 @@ export default function Hero() {
             <MapPin size={20} weight="fill" />
             <div className="flex flex-col">
               <p className="text-xl">Germany</p>
-              <p className="text-[10px] tracking-widest">RESTAURANT MANAGER</p>
+              <p className="text-[10px] tracking-widest">DEVOPS ENGINEER</p>
             </div>
           </div>
         </GlassCard>
@@ -97,7 +97,7 @@ export default function Hero() {
             <MapPin size={20} weight="fill" />
             <div className="flex flex-col">
               <p className="text-xl">United States</p>
-              <p className="text-[10px] tracking-widest">SOFTWARE ENGINEER</p>
+              <p className="text-[10px] tracking-widest">SOFTWARE DEVELOPER</p>
             </div>
           </div>
         </GlassCard>
