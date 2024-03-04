@@ -63,7 +63,7 @@ Let's start with the steps for setting up the project that are common for both o
 git clone https://github.com/ParamBirje/JobsAhoy.git
 ```
 - Change directory into the project directory `cd JobsAhoy`
-- Inside the project directory, install the required JS dependencies using your favourite package manager
+- Inside the project directory, install the required JS dependencies by running the following command
 ```
 npm install
 ```
@@ -103,7 +103,7 @@ You can optionally use MySQL Workbench for an easier UI based configuration and 
 
 Open a new terminal session and change working directory to the project's root directory i.e `cd JobsAhoy`
 
-- After we have the project dependencies installed, let's create a build of our app.
+- After we have the project dependencies installed, let's create a build of our app by executing:
 
 ```
 npm run build
