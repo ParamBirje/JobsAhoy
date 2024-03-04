@@ -85,7 +85,7 @@ export default function JobInfo() {
               <div className="flex items-center gap-2">
                 <div className="text-[11px] bg-primary-lightest hover:brightness-110 px-4 py-1 rounded-full tracking-wider flex items-center gap-3">
                   <p>
-                    {job.job_sponsored ? "Visa Sponsored" : "Visa Available"}
+                    {job.job_sponsored ? "Visa Sponsored" : "Visa Assistance"}
                   </p>
                 </div>
 
