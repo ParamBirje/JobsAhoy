@@ -8,7 +8,7 @@ const dialect = new MysqlDialect({
     host: process.env.DATABASE_HOST as string,
     user: process.env.DATABASE_USER as string,
     password: process.env.DATABASE_PASSWORD as string,
-    port: Number(process.env.DATABASE_HOST),
+    port: Number(process.env.DATABASE_PORT),
     connectionLimit: 10, // default
   }),
 });
