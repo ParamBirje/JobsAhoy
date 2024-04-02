@@ -51,6 +51,10 @@ export const authOptions: NextAuthOptions = {
     signOut: "/user/logged-out",
   },
 
+  session: {
+    strategy: "jwt",
+  },
+
   callbacks: {
     async signIn({ account, profile, email, credentials }) {
       if (profile) {
