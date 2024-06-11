@@ -8,7 +8,7 @@ export default async function SavedJobsView() {
 
   // TODO: Add try catch, fallback value
   const response = await fetch(
-    `http://localhost:3000/api/user/saved-job?userId=${session?.user.id}`
+    `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/saved-job?userId=${session?.user.id}`
   );
 
   const result = await response.json();

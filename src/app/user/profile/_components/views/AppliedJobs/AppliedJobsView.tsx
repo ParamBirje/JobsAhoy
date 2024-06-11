@@ -8,7 +8,7 @@ export default async function AppliedJobsView() {
 
   // TODO: Add try catch, fallback value
   const response = await fetch(
-    `http://localhost:3000/api/user/applied-job?userId=${session?.user.id}`
+    `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/applied-job?userId=${session?.user.id}`
   );
 
   const result = await response.json();

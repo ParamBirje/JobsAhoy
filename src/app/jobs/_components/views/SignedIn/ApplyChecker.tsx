@@ -50,7 +50,7 @@ export default function ApplyChecker({
   async function handleAcceptButton() {
     try {
       const res = await fetch(
-        `http://localhost:3000/api/user/applied-job?userId=${session?.user.id}&jobId=${job.id}`,
+        `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/applied-job?userId=${session?.user.id}&jobId=${job.id}`,
         {
           method: "POST",
         }
