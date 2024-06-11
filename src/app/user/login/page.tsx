@@ -35,9 +35,9 @@ export default async function SignIn() {
 
           {/* <p className="self-center">/</p> */}
 
-          {/* <div className="mx-auto">
+          <div className="mx-auto">
             <SocialLoginButtons />
-          </div> */}
+          </div>
         </div>
       </div>
     </main>
