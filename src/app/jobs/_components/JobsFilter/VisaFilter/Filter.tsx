@@ -36,12 +36,18 @@ export default function VisaFilter() {
     }))
   );
 
-  const handleFilterChange = (index: number) => {
-    setFilterList((prevFilterList) => {
-      const updatedFilterList = [...prevFilterList];
-      updatedFilterList[index].checked = !updatedFilterList[index].checked;
-      return updatedFilterList;
-    });
+  const handleFilterChange = (idToUpdate: number) => {
+    // setFilterList((prevFilterList) => {
+    //   const updatedFilterList = [...prevFilterList];
+    //   updatedFilterList[index].checked = !updatedFilterList[index].checked;
+    //   return updatedFilterList;
+    // });
+    const newFilterList = filterList.map((jobType) =>
+      jobType.id === idToUpdate
+        ? { ...jobType, checked: !jobType.checked }
+        : jobType
+    );
+    setFilterList(newFilterList);
   };
 
   // Listening to clicks outside of the profile options
@@ -122,7 +128,7 @@ export default function VisaFilter() {
                   key={visaStatus.id}
                   option={visaStatus}
                   checked={visaStatus.checked}
-                  onChange={() => handleFilterChange(index)}
+                  onChange={handleFilterChange}
                 />
               );
             })}

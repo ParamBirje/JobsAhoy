@@ -106,7 +106,7 @@ export default function ProfileSwitcher({
     <div className="relative">
       <button
         type="button"
-        onClick={handleShowOptions}
+        // onClick={handleShowOptions}
         className="px-4 py-2 flex justify-between items-center gap-10 my-1 rounded-md border-[1.5px] border-primary-lightest bg-[#0A1022] hover:bg-primary-lightest duration-100"
       >
         <div className="flex justify-start items-center gap-3">
