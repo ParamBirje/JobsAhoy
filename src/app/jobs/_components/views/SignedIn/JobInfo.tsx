@@ -182,7 +182,7 @@ export default function JobInfo() {
 // FIXME: This function calls on clientside
 async function GetSelectedJobDetails(jobId: string | number) {
   const result = await fetch(
-    `http://localhost:3000/api/jobs/specific?jobId=${jobId}`
+    `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/jobs/specific?jobId=${jobId}`
   );
   const body = await result.json();
 
@@ -192,7 +192,7 @@ async function GetSelectedJobDetails(jobId: string | number) {
 // FIXME: Make this send parameters in body of the request, not in url
 async function SaveJobForLater(userId: number, jobId: number) {
   const result = await fetch(
-    `http://localhost:3000/api/user/saved-job?userId=${userId}&jobId=${jobId}`,
+    `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/saved-job?userId=${userId}&jobId=${jobId}`,
     {
       method: "POST",
     }
@@ -206,7 +206,7 @@ async function SaveJobForLater(userId: number, jobId: number) {
 // FIXME: Make this send parameters in body of the request, not in url
 async function DeleteSaveJob(savedJobId: number) {
   const result = await fetch(
-    `http://localhost:3000/api/user/saved-job?id=${savedJobId}`,
+    `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/saved-job?id=${savedJobId}`,
     {
       method: "DELETE",
     }

@@ -9,12 +9,17 @@ export default function ProfileOption({
 }: {
   profile: UserProfileType;
   checked: boolean;
-  onChange: VoidFunction;
+  onChange: () => void;
 }) {
   return (
     <div className="duration-100 group w-full flex items-center justify-start gap-3 hover:bg-primary-lightest rounded-md px-3 py-1">
       <div className="flex items-center gap-2">
-        <input checked={checked} onChange={onChange} type="checkbox" id={profile.profile_name} />
+        <input
+          checked={checked}
+          onChange={onChange}
+          type="checkbox"
+          id={profile.profile_name}
+        />
 
         <label className=" whitespace-nowrap" htmlFor={profile.profile_name}>
           {profile.profile_name}

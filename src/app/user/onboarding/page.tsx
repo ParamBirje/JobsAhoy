@@ -17,15 +17,18 @@ export default async function OnboardingPage({
     "use server";
 
     // try {
-    const result = await fetch("http://localhost:3000/api/user/onboarding", {
-      method: "POST",
-      body: JSON.stringify({
-        userID: session?.user?.id,
-        userProfile: formData.userProfile,
-        profileDesc: formData.profileDesc,
-        userProfileExperience: formData.userProfileExperience,
-      }),
-    });
+    const result = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/onboarding`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          userID: session?.user?.id,
+          userProfile: formData.userProfile,
+          profileDesc: formData.profileDesc,
+          userProfileExperience: formData.userProfileExperience,
+        }),
+      }
+    );
 
     const body = await result.json();
 

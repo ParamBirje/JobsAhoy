@@ -46,31 +46,37 @@ export default function Pagination() {
   }
 
   return (
-    <div className="w-full mt-1 mb-10 bg-opacity-60 flex items-center bg-primary-lighter rounded-md">
-      <button
-        onClick={handlePrev}
-        className="duration-100 bg-primary-lighter rounded-md px-5 py-3 hover:bg-primary-lightest"
-      >
-        Prev
-      </button>
+    totalPages > 1 && (
+      <div className="w-full mt-1 mb-10 bg-opacity-60 flex items-center bg-primary-lighter rounded-md">
+        <button
+          onClick={handlePrev}
+          className="duration-100 bg-primary-lighter rounded-md px-5 py-3 hover:bg-primary-lightest"
+        >
+          Prev
+        </button>
 
-      <ul className="w-full flex items-center justify-evenly text-accent-light">
-        {pageNums.map((pageNum) => {
-          if (pageNum == currentPage)
-            return (
-              <PageNumber key={pageNum} isActive={true} pageNumber={pageNum} />
-            );
-          return <PageNumber key={pageNum} pageNumber={pageNum} />;
-        })}
-      </ul>
+        <ul className="w-full flex items-center justify-evenly text-accent-light">
+          {pageNums.map((pageNum) => {
+            if (pageNum == currentPage)
+              return (
+                <PageNumber
+                  key={pageNum}
+                  isActive={true}
+                  pageNumber={pageNum}
+                />
+              );
+            return <PageNumber key={pageNum} pageNumber={pageNum} />;
+          })}
+        </ul>
 
-      <button
-        onClick={handleNext}
-        className="duration-100 bg-primary-lighter rounded-md px-5 py-3 hover:bg-primary-lightest"
-      >
-        Next
-      </button>
-    </div>
+        <button
+          onClick={handleNext}
+          className="duration-100 bg-primary-lighter rounded-md px-5 py-3 hover:bg-primary-lightest"
+        >
+          Next
+        </button>
+      </div>
+    )
   );
 }
 

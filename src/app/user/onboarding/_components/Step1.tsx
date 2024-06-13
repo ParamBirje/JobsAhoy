@@ -13,21 +13,21 @@ export default function Step1({ next, formData }: { next: any; formData: {} }) {
   let jobOptions: JobProfileOptionType[] = [];
 
   function loadOptions(inputValue: string, callback: any) {
-    fetch(`http://localhost:3000/api/jobs/profiles?search=${inputValue}`).then(
-      async (response) => {
-        const result = await response.json();
+    fetch(
+      `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/jobs/profiles?search=${inputValue}`
+    ).then(async (response) => {
+      const result = await response.json();
 
-        jobOptions = [];
-        result.profiles.forEach((prof: any) => {
-          jobOptions.push({
-            label: prof.profile_name as string,
-            value: prof.id as number,
-          });
+      jobOptions = [];
+      result.profiles.forEach((prof: any) => {
+        jobOptions.push({
+          label: prof.profile_name as string,
+          value: prof.id as number,
         });
+      });
 
-        callback(jobOptions);
-      }
-    );
+      callback(jobOptions);
+    });
   }
 
   return (

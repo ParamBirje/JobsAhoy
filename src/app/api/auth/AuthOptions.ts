@@ -51,6 +51,10 @@ export const authOptions: NextAuthOptions = {
     signOut: "/user/logged-out",
   },
 
+  // session: {
+  //   strategy: "jwt",
+  // },
+
   callbacks: {
     async signIn({ account, profile, email, credentials }) {
       if (profile) {
@@ -72,15 +76,11 @@ export const authOptions: NextAuthOptions = {
 
       return true;
     },
-    async session({ session, token, user }) {
+    async session({ session, token }) {
       // call database to get user id
-      if (session.user) {
-        const response = await fetch(
-          `http://localhost:3000/api/user/id?email=${session.user.email}`
-        );
-        const body = await response.json();
-
-        session.user.id = body.id;
+      if (session.user.email) {
+        const response = await user.GetUserID(session.user.email);
+        session.user.id = response?.id;
       }
 
       return session;

@@ -7,13 +7,15 @@ export default function Option({
 }: {
   option: VisaStatusType;
   checked: boolean;
-  onChange: VoidFunction;
+  onChange: (id: number) => void;
 }) {
   return (
     <div className="duration-100 group w-full flex items-center justify-start gap-3 hover:bg-primary-lightest rounded-md px-3 py-1">
       <input
         checked={checked}
-        onChange={onChange}
+        onChange={() => {
+          onChange(option.id);
+        }}
         type="checkbox"
         id={option.id.toString()}
       />

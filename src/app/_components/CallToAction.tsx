@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function CallToAction() {
   return (
     <section className="bg-secondary text-black" id="call_to_action">
@@ -12,17 +14,23 @@ export default function CallToAction() {
         </div>
 
         <div className="h-full w-1/2 flex justify-end items-center gap-1">
-          <button className="text-secondary tracking-wide text-lg text-left h-full bg-gradient-to-br from-orange-300 via-orange-500 to-orange-500 rounded-sm rounded-bl-2xl rounded-tl-2xl py-8 px-8 font-medium w-1/4 duration-100 hover:brightness-110">
+          <Link
+            href="/jobs"
+            className="text-secondary tracking-wide text-lg text-left h-full bg-gradient-to-br from-orange-300 via-orange-500 to-orange-500 rounded-sm rounded-bl-2xl rounded-tl-2xl py-8 px-8 font-medium w-1/4 duration-100 hover:brightness-110"
+          >
             Explore
             <br />
             Jobs
-          </button>
+          </Link>
 
-          <button className="text-secondary tracking-wide text-lg text-right h-full bg-gradient-to-tl from-blue-400 via-accent to-accent rounded-sm rounded-br-2xl rounded-tr-2xl py-8 px-8 font-medium w-1/4 duration-100 hover:brightness-110">
+          <Link
+            href="/user/login"
+            className="text-secondary tracking-wide text-lg text-right h-full bg-gradient-to-tl from-blue-400 via-accent to-accent rounded-sm rounded-br-2xl rounded-tr-2xl py-8 px-8 font-medium w-1/4 duration-100 hover:brightness-110"
+          >
             Create
             <br />
             Account
-          </button>
+          </Link>
         </div>
       </div>
     </section>

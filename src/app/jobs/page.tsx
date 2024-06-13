@@ -13,7 +13,7 @@ export default async function JobsPage({
   if (session) {
     // try {
     const result = await fetch(
-      `http://localhost:3000/api/user/check-profile?id=${session.user?.id}`,
+      `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/check-profile?id=${session.user?.id}`,
       {
         cache: "reload",
         // next: {

@@ -9,7 +9,9 @@ export default async function ProfilesView() {
   const session = await getServerSideSession();
 
   // TODO: Add try catch, fallback value
-  const response = await fetch(`http://localhost:3000/api/user/profiles?id=${session?.user.id}`);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/profiles?id=${session?.user.id}`
+  );
 
   const result = await response.json();
 

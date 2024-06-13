@@ -1,3 +1,4 @@
+import Tooltip from "@/components/Tooltip";
 import ExperienceFilter from "./JobsFilter/ExperienceFilter/Filter";
 import JobTypeFilter from "./JobsFilter/JobTypeFilter/Filter";
 import LocationFilter from "./JobsFilter/LocationFilter/Filter";
@@ -18,9 +19,11 @@ export default function Filters({
       <JobTypeFilter optionsList={jobTypesList} />
 
       <div className="flex justify-end grow">
-        <button className="px-6 py-2 rounded-full duration-100 border border-primary-lightest hover:bg-primary-lightest tracking-wider flex items-center gap-3">
-          <p>More Filters</p>
-        </button>
+        <Tooltip text="Coming Soon">
+          <button className="px-6 py-2 rounded-full duration-100 border border-primary-lightest hover:bg-primary-lightest tracking-wider flex items-center gap-3">
+            <p>More Filters</p>
+          </button>
+        </Tooltip>
       </div>
     </div>
   );
